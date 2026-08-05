@@ -3,27 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Task 7</title>
+    <title>JavaScript Tasks Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="form-container">
-        <div class="form-row">
-            <label for="num1">Enter First Number</label>
-            <input type="text" id="num1">
-        </div>
-        <div class="form-row">
-            <label for="num2">Enter Second Number</label>
-            <input type="text" id="num2">
-        </div>
-        <div class="form-row">
-            <label for="result">Result</label>
-            <input type="text" id="result" readonly>
-        </div>
+    <div class="site-wrapper">
+        <header class="header">
+            <h1>JavaScript Tasks Dashboard</h1>
+        </header>
+
+        <main class="main-content">
+            <!-- Task 7: Addition & NaN Box -->
+            <section class="task-card">
+                <h2>Task 7: Addition Calculator</h2>
+                <div class="form-row">
+                    <label for="num1">Enter First Number</label>
+                    <input type="text" id="num1">
+                </div>
+                <div class="form-row">
+                    <label for="num2">Enter Second Number</label>
+                    <input type="text" id="num2">
+                </div>
+                <div class="form-row">
+                    <label for="result">Result</label>
+                    <input type="text" id="result" readonly>
+                </div>
+            </section>
+
+            <!-- Task 5: BMI Calculator UI -->
+            <section class="task-card">
+                <h2>Task 5: BMI Calculator</h2>
+                <div class="form-row">
+                    <label for="weight">Weight (kg)</label>
+                    <input type="text" id="weight" placeholder="e.g. 70">
+                </div>
+                <div class="form-row">
+                    <label for="height">Height (m)</label>
+                    <input type="text" id="height" placeholder="e.g. 1.75">
+                </div>
+                <div class="form-row">
+                    <label for="bmi-result">BMI Result</label>
+                    <input type="text" id="bmi-result" readonly>
+                </div>
+                <button id="bmi-btn" class="btn">Calculate BMI</button>
+            </section>
+        </main>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
