@@ -72,5 +72,22 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-});
 
+    const weightInput = document.getElementById("weight");
+    const heightInput = document.getElementById("height");
+    const bmiResultBox = document.getElementById("bmi-result");
+    const bmiBtn = document.getElementById("bmi-btn");
+
+    if (bmiBtn) {
+        bmiBtn.addEventListener("click", () => {
+            let w = parseFloat(weightInput.value);
+            let h = parseFloat(heightInput.value);
+
+            if (!isNaN(w) && !isNaN(h) && h > 0) {
+                bmiResultBox.value = calculateBMI(w, h);
+            } else {
+                bmiResultBox.value = "Invalid Input";
+            }
+        });
+    }
+});
