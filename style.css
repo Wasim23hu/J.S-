@@ -6,96 +6,71 @@
 }
 
 body {
-    background-color: #f4f6f9;
-    color: #333;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 10px;
 }
 
 .site-wrapper {
     width: 100%;
-    max-width: 600px;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
 }
 
-.header h1 {
-    font-size: 1.5rem;
-    color: #183f70;
-    margin-bottom: 20px;
-    text-align: center;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
-}
-
-.task-card {
-    background: #fafafa;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+.form-container {
+    border: 1px solid #333;
+    border-radius: 4px;
     padding: 15px;
-    margin-bottom: 20px;
-}
-
-.task-card h2 {
-    font-size: 1.1rem;
-    color: #8b0000;
-    margin-bottom: 12px;
+    background: #fff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.15);
 }
 
 .form-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .form-row label {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    color: #222;
     font-weight: bold;
-    color: #444;
-    flex: 1;
 }
 
 .form-row input {
-    flex: 1.2;
-    height: 32px;
-    padding: 5px 10px;
+    width: 150px;
+    height: 26px;
+    padding: 2px 6px;
     border: 1px solid #999;
-    border-radius: 4px;
     background: #fff;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
-.btn {
-    background: #183f70;
+.btn-calc {
+    background: #2b2b2b;
     color: #fff;
     border: none;
-    padding: 8px 15px;
-    border-radius: 4px;
+    padding: 6px 12px;
+    border-radius: 3px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 0.9rem;
-    display: block;
+    font-size: 0.8rem;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
-.btn:hover {
-    background: #102a4c;
+.btn-calc:hover {
+    background: #444;
 }
 
 @media screen and (max-width: 480px) {
     .form-row {
         flex-direction: column;
         align-items: flex-start;
-    }
-    .form-row label {
-        margin-bottom: 5px;
+        gap: 4px;
     }
     .form-row input {
         width: 100%;
