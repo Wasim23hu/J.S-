@@ -3,43 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Form</title>
+    <title>  </title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="site-wrapper">
-        <!-- Task 7 Form -->
-        <div class="form-container">
-            <div class="form-row">
-                <label for="num1">Enter First Number</label>
-                <input type="text" id="num1">
+    <div class="wrapper">
+        <!-- Task 1 -->
+        <div class="box">
+            <div class="row">
+                <label>Enter Age (Years)</label>
+                <input type="text" id="task1-input">
             </div>
-            <div class="form-row">
-                <label for="num2">Enter Second Number</label>
-                <input type="text" id="num2">
+            <div class="row">
+                <label>Days</label>
+                <input type="text" id="task1-output" readonly>
             </div>
-            <div class="form-row">
-                <label for="result">Result</label>
-                <input type="text" id="result" readonly>
-            </div>
+            <button onclick="handleTask1()">Convert</button>
         </div>
 
-        <!-- BMI Calculator Form -->
-        <div class="form-container" style="margin-top: 20px;">
-            <div class="form-row">
-                <label for="weight">Weight (kg)</label>
-                <input type="text" id="weight">
+        <!-- Task 2 -->
+        <div class="box">
+            <div class="row">
+                <label>Enter Hours</label>
+                <input type="text" id="task2-input">
             </div>
-            <div class="form-row">
-                <label for="height">Height (m)</label>
-                <input type="text" id="height">
+            <div class="row">
+                <label>Seconds</label>
+                <input type="text" id="task2-output" readonly>
             </div>
-            <div class="form-row">
-                <label for="bmi-result">BMI Result</label>
-                <input type="text" id="bmi-result" readonly>
+            <button onclick="handleTask2()">Convert</button>
+        </div>
+
+        <!-- Task 3 -->
+        <div class="box">
+            <div class="row">
+                <label>Enter Value</label>
+                <input type="text" id="task3-input">
             </div>
-            <button id="bmi-btn" class="btn-calc">Calculate BMI</button>
+            <div class="row">
+                <label>Next Number</label>
+                <input type="text" id="task3-output" readonly>
+            </div>
+            <button onclick="handleTask3()">Find Next</button>
+        </div>
+
+        <!-- Task 4 -->
+        <div class="box">
+            <div class="row">
+                <label>Enter Name</label>
+                <input type="text" id="task4-input">
+            </div>
+            <div class="row">
+                <label>Formatted Name</label>
+                <input type="text" id="task4-output" readonly>
+            </div>
+            <button onclick="handleTask4()">Capitalize</button>
+        </div>
+
+        <!-- Task 5 -->
+        <div class="box">
+            <div class="row">
+                <label>Weight (kg)</label>
+                <input type="text" id="task5-weight">
+            </div>
+            <div class="row">
+                <label>Height (m)</label>
+                <input type="text" id="task5-height">
+            </div>
+            <div class="row">
+                <label>BMI Result</label>
+                <input type="text" id="task5-output" readonly>
+            </div>
+            <button onclick="handleTask5()">Calculate BMI</button>
+        </div>
+
+        <!-- Task 6 -->
+        <div class="box">
+            <div class="row">
+                <label>Array</label>
+                <input type="text" id="task6-display" readonly>
+            </div>
+            <div class="row">
+                <label>First & Last</label>
+                <input type="text" id="task6-output" readonly>
+            </div>
+            <button onclick="handleTask6()">Generate</button>
+        </div>
+
+        <!-- Task 7 -->
+        <div class="box">
+            <div class="row">
+                <label>Enter First Number</label>
+                <input type="text" id="num1">
+            </div>
+            <div class="row">
+                <label>Enter Second Number</label>
+                <input type="text" id="num2">
+            </div>
+            <div class="row">
+                <label>Result</label>
+                <input type="text" id="result" readonly>
+            </div>
         </div>
     </div>
 
