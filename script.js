@@ -190,4 +190,3 @@ document.addEventListener("DOMContentLoaded", () => {
   box2.addEventListener("input", updateSum);
 
 });
-      
