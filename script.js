@@ -1,225 +1,132 @@
-/* =========================================================
-   JS Utility Toolkit — script.js
-   Each task is wired up independently once the DOM is ready.
-   ========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  /* ---------- small helper ---------- */
-  function setOutput(el, text, state) {
-    el.textContent = text;
-    el.classList.remove("is-empty", "is-error");
-    if (state) el.classList.add(state);
-  }
-
-  /* =========================================================
-     TASK 1 — Age (years) to Days converter
-     ========================================================= */
-  const ageInput = document.getElementById("ageInput");
-  const ageOutput = document.getElementById("ageOutput");
-
-  function ageToDays(years) {
-    return years * 365; // simple average-year conversion
-  }
-
-  document.getElementById("ageBtn").addEventListener("click", () => {
-    const years = parseFloat(ageInput.value);
-    if (isNaN(years) || years < 0) {
-      setOutput(ageOutput, "Please enter a valid, non-negative age.", "is-error");
-      return;
-    }
-    const days = ageToDays(years);
-    setOutput(ageOutput, `${years} year(s) = ${days} days`);
-  });
-
-  /* =========================================================
-     TASK 2 — Hours to Seconds converter
-     ========================================================= */
-  const hoursInput = document.getElementById("hoursInput");
-  const hoursOutput = document.getElementById("hoursOutput");
-
-  function hoursToSeconds(hours) {
-    return hours * 3600;
-  }
-
-  document.getElementById("hoursBtn").addEventListener("click", () => {
-    const hours = parseFloat(hoursInput.value);
-    if (isNaN(hours) || hours < 0) {
-      setOutput(hoursOutput, "Please enter a valid, non-negative duration.", "is-error");
-      return;
-    }
-    const seconds = hoursToSeconds(hours);
-    setOutput(hoursOutput, `${hours} hour(s) = ${seconds} seconds`);
-  });
-
-  /* =========================================================
-     TASK 3 — Find the "next" number
-     Scenario A: the element that sits next to a target inside an array
-     Scenario B: the next number after a single value (integer vs float)
-     ========================================================= */
-
-  // --- Scenario A: next value inside an array ---
-  const arrayInput = document.getElementById("arrayInput");
-  const arrayTarget = document.getElementById("arrayTarget");
-  const arrayOutput = document.getElementById("arrayOutput");
-
-  function findNextInArray(arr, target) {
-    const index = arr.indexOf(target);
-    if (index === -1) return { found: false };
-    if (index === arr.length - 1) return { found: true, hasNext: false };
-    return { found: true, hasNext: true, next: arr[index + 1] };
-  }
-
-  document.getElementById("arrayBtn").addEventListener("click", () => {
-    const arr = arrayInput.value
-      .split(",")
-      .map(v => parseFloat(v.trim()))
-      .filter(v => !isNaN(v));
-    const target = parseFloat(arrayTarget.value);
-
-    if (arr.length === 0) {
-      setOutput(arrayOutput, "Please enter a valid comma-separated array.", "is-error");
-      return;
-    }
-    if (isNaN(target)) {
-      setOutput(arrayOutput, "Please enter a number to search for.", "is-error");
-      return;
-    }
-
-    const result = findNextInArray(arr, target);
-    if (!result.found) {
-      setOutput(arrayOutput, `${target} was not found in [${arr.join(", ")}]`, "is-error");
-    } else if (!result.hasNext) {
-      setOutput(arrayOutput, `${target} is the last element — no number follows it.`);
+// Task 1
+function runTask1() {
+    let val = parseFloat(document.getElementById("t1-input").value);
+    let res = document.getElementById("t1-result");
+    if (!isNaN(val)) {
+        let days = val * 365;
+        res.style.color = "#38bdf8";
+        res.innerText = `${val} year(s) = ${days} days`;
     } else {
-      setOutput(arrayOutput, `The number next to ${target} is ${result.next}`);
+        res.style.color = "#ef4444";
+        res.innerText = "Please enter a valid number.";
     }
-  });
+}
 
-  // --- Scenario B: next number after a single value ---
-  const singleInput = document.getElementById("singleInput");
-  const singleOutput = document.getElementById("singleOutput");
-
-  function findNextSingle(value) {
-    const isInteger = Number.isInteger(value);
-    if (isInteger) {
-      return { next: value + 1, type: "integer" };
+// Task 2
+function runTask2() {
+    let val = parseFloat(document.getElementById("t2-input").value);
+    let res = document.getElementById("t2-result");
+    if (!isNaN(val)) {
+        let secs = val * 3600;
+        res.style.color = "#38bdf8";
+        res.innerText = `${val} hour(s) = ${secs} seconds`;
+    } else {
+        res.style.color = "#ef4444";
+        res.innerText = "Please enter valid hours.";
     }
-    // For a float, "next" is taken as one step up at the same decimal precision.
-    const decimals = (value.toString().split(".")[1] || "").length;
-    const step = 1 / Math.pow(10, decimals);
-    const next = parseFloat((value + step).toFixed(decimals));
-    return { next, type: "float" };
-  }
+}
 
-  document.getElementById("singleBtn").addEventListener("click", () => {
-    const value = parseFloat(singleInput.value);
-    if (isNaN(value)) {
-      setOutput(singleOutput, "Please enter a valid number.", "is-error");
-      return;
+// Task 3 Scenario A
+function runTask3A() {
+    let arrStr = document.getElementById("t3-arr").value;
+    let target = parseFloat(document.getElementById("t3-target").value);
+    let res = document.getElementById("t3-result");
+
+    if (arrStr.trim() !== "" && !isNaN(target)) {
+        let arr = arrStr.split(",").map(item => parseFloat(item.trim()));
+        let index = arr.indexOf(target);
+        if (index !== -1 && index < arr.length - 1) {
+            res.style.color = "#38bdf8";
+            res.innerText = `Next number in array is: ${arr[index + 1]}`;
+        } else {
+            res.style.color = "#ef4444";
+            res.innerText = "Target not found or it is the last element.";
+        }
+    } else {
+        res.style.color = "#ef4444";
+        res.innerText = "Please fill both array and target fields correctly.";
     }
-    const result = findNextSingle(value);
-    setOutput(
-      singleOutput,
-      `${value} is a ${result.type} → next number is ${result.next}`
-    );
-  });
+}
 
-  /* =========================================================
-     TASK 4 — Capitalize a lowercase name
-     ========================================================= */
-  const nameInput = document.getElementById("nameInput");
-  const nameOutput = document.getElementById("nameOutput");
+// Task 3 Scenario B
+function runTask3B() {
+    let val = parseFloat(document.getElementById("t3-single").value);
+    let res = document.getElementById("t3-result");
 
-  function capitalizeName(name) {
-    return name
-      .trim()
-      .split(/\s+/)
-      .map(part => part.charAt(0).toUpperCase() + part.slice(1))
-      .join(" ");
-  }
-
-  document.getElementById("nameBtn").addEventListener("click", () => {
-    const raw = nameInput.value.trim();
-    if (raw === "") {
-      setOutput(nameOutput, "Please enter a name.", "is-error");
-      return;
+    if (!isNaN(val)) {
+        let nextVal = Number.isInteger(val) ? val + 1 : parseFloat((val + 0.1).toFixed(2));
+        res.style.color = "#38bdf8";
+        res.innerText = `Next number value: ${nextVal}`;
+    } else {
+        res.style.color = "#ef4444";
+        res.innerText = "Please enter a valid number.";
     }
-    if (raw !== raw.toLowerCase()) {
-      setOutput(nameOutput, "Please enter the name in lowercase only.", "is-error");
-      return;
+}
+
+// Task 4
+function runTask4() {
+    let name = document.getElementById("t4-input").value;
+    let res = document.getElementById("t4-result");
+
+    if (name.trim() !== "") {
+        let formatted = name.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ");
+        res.style.color = "#38bdf8";
+        res.innerText = `Formatted Name: ${formatted}`;
+    } else {
+        res.style.color = "#ef4444";
+        res.innerText = "Please enter a name.";
     }
-    setOutput(nameOutput, capitalizeName(raw));
-  });
+}
 
-  /* =========================================================
-     TASK 5 — BMI Calculator
-     ========================================================= */
-  const weightInput = document.getElementById("weightInput");
-  const heightInput = document.getElementById("heightInput");
-  const bmiOutput = document.getElementById("bmiOutput");
+// Task 5
+function runTask5() {
+    let w = parseFloat(document.getElementById("t5-weight").value);
+    let h = parseFloat(document.getElementById("t5-height").value);
+    let res = document.getElementById("t5-result");
 
-  function calculateBMI(weightKg, heightM) {
-    return weightKg / (heightM * heightM);
-  }
-
-  function bmiCategory(bmi) {
-    if (bmi < 18.5) return "Underweight";
-    if (bmi < 25) return "Normal weight";
-    if (bmi < 30) return "Overweight";
-    return "Obese";
-  }
-
-  document.getElementById("bmiBtn").addEventListener("click", () => {
-    const weight = parseFloat(weightInput.value);
-    const height = parseFloat(heightInput.value);
-
-    if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
-      setOutput(bmiOutput, "Please enter a valid weight (kg) and height (m).", "is-error");
-      return;
+    if (!isNaN(w) && !isNaN(h) && h > 0) {
+        let bmi = (w / (h * h)).toFixed(2);
+        res.style.color = "#38bdf8";
+        res.innerText = `Calculated BMI Score: ${bmi}`;
+    } else {
+        res.style.color = "#ef4444";
+        res.innerText = "Please enter valid weight and height.";
     }
+}
 
-    const bmi = calculateBMI(weight, height);
-    setOutput(bmiOutput, `BMI = ${bmi.toFixed(2)} → ${bmiCategory(bmi)}`);
-  });
+// Task 6
+function runTask6() {
+    let arr = [];
+    for (let i = 0; i < 5; i++) {
+        arr.push(Math.floor(Math.random() * 100) + 1);
+    }
+    document.getElementById("t6-display").value = arr.join(", ");
+    let res = document.getElementById("t6-result");
+    res.style.color = "#38bdf8";
+    res.innerText = `First Element: ${arr[0]} | Last Element: ${arr[arr.length - 1]}`;
+}
 
-  /* =========================================================
-     TASK 6 — Random array generator + first/last element picker
-     ========================================================= */
-  const genArrayBtn = document.getElementById("genArrayBtn");
-  const genArrayOutput = document.getElementById("genArrayOutput");
-  const endsOutput = document.getElementById("endsOutput");
+// Task 7
+document.addEventListener("DOMContentLoaded", () => {
+    const input1 = document.getElementById("num1");
+    const input2 = document.getElementById("num2");
+    const resultBox = document.getElementById("result");
 
-  function generateRandomArray(length = 8, max = 100) {
-    return Array.from({ length }, () => Math.floor(Math.random() * max));
-  }
+    if (input1 && input2 && resultBox) {
+        const calculateAddition = () => {
+            let v1 = parseFloat(input1.value);
+            let v2 = parseFloat(input2.value);
 
-  function pickFirstAndLast(arr) {
-    return { first: arr[0], last: arr[arr.length - 1] };
-  }
+            if (!isNaN(v1) && isNaN(v2)) {
+                resultBox.value = "NaN";
+            } else if (!isNaN(v1) && !isNaN(v2)) {
+                resultBox.value = v1 + v2;
+            } else {
+                resultBox.value = "";
+            }
+        };
 
-  genArrayBtn.addEventListener("click", () => {
-    const arr = generateRandomArray();
-    setOutput(genArrayOutput, `Array: [${arr.join(", ")}]`);
-    const ends = pickFirstAndLast(arr);
-    setOutput(endsOutput, `First element: ${ends.first}  |  Last element: ${ends.last}`);
-  });
-
-  /* =========================================================
-     TASK 7 — Live adder across three text boxes (event handling)
-     ========================================================= */
-  const box1 = document.getElementById("box1");
-  const box2 = document.getElementById("box2");
-  const box3 = document.getElementById("box3");
-
-  function updateSum() {
-    const a = parseFloat(box1.value); // parseFloat("") is NaN by design
-    const b = parseFloat(box2.value);
-    const sum = a + b; // NaN propagates until both boxes hold a number
-    box3.value = isNaN(sum) ? "NaN" : sum;
-  }
-
-  box1.addEventListener("input", updateSum);
-  box2.addEventListener("input", updateSum);
-
+        input1.addEventListener("input", calculateAddition);
+        input2.addEventListener("input", calculateAddition);
+    }
 });
