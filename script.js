@@ -1,45 +1,44 @@
-function ageToDays(ageInYears) {
-    return ageInYears * 365;
+function handleTask1() {
+    let val = parseFloat(document.getElementById("task1-input").value);
+    document.getElementById("task1-output").value = !isNaN(val) ? val * 365 : "Invalid";
 }
 
-function hoursToSeconds(hours) {
-    return hours * 3600;
+function handleTask2() {
+    let val = parseFloat(document.getElementById("task2-input").value);
+    document.getElementById("task2-output").value = !isNaN(val) ? val * 3600 : "Invalid";
 }
 
-function getNextInArray(arr, currentNum) {
-    let index = arr.indexOf(currentNum);
-    if (index !== -1 && index < arr.length - 1) {
-        return arr[index + 1];
-    }
-    return "Next number not found in array";
-}
-
-function getNextValue(val) {
-    if (Number.isInteger(val)) {
-        return val + 1;
+function handleTask3() {
+    let val = parseFloat(document.getElementById("task3-input").value);
+    if (!isNaN(val)) {
+        document.getElementById("task3-output").value = Number.isInteger(val) ? val + 1 : parseFloat((val + 0.1).toFixed(2));
     } else {
-        return parseFloat((val + 0.1).toFixed(2));
+        document.getElementById("task3-output").value = "Invalid";
     }
 }
 
-function formatName(name) {
-    return name.charAt(0).toUpperCase() + name.slice(1);
+function handleTask4() {
+    let val = document.getElementById("task4-input").value;
+    document.getElementById("task4-output").value = val.trim() !== "" ? val.charAt(0).toUpperCase() + val.slice(1) : "";
 }
 
-function calculateBMI(weightKg, heightM) {
-    let bmi = weightKg / (heightM * heightM);
-    return bmi.toFixed(2);
+function handleTask5() {
+    let w = parseFloat(document.getElementById("task5-weight").value);
+    let h = parseFloat(document.getElementById("task5-height").value);
+    if (!isNaN(w) && !isNaN(h) && h > 0) {
+        document.getElementById("task5-output").value = (w / (h * h)).toFixed(2);
+    } else {
+        document.getElementById("task5-output").value = "Invalid";
+    }
 }
 
-function getFirstAndLastElement() {
-    let randomArr = [];
+function handleTask6() {
+    let arr = [];
     for (let i = 0; i < 5; i++) {
-        randomArr.push(Math.floor(Math.random() * 100) + 1);
+        arr.push(Math.floor(Math.random() * 100) + 1);
     }
-    return {
-        first: randomArr[0],
-        last: randomArr[randomArr.length - 1]
-    };
+    document.getElementById("task6-display").value = arr.join(", ");
+    document.getElementById("task6-output").value = "First: " + arr[0] + ", Last: " + arr[arr.length - 1];
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -49,44 +48,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (input1 && input2 && resultBox) {
         input1.addEventListener("input", () => {
-            let val1 = parseFloat(input1.value);
-            let val2 = parseFloat(input2.value);
-
-            if (!isNaN(val1) && isNaN(val2)) {
+            let v1 = parseFloat(input1.value);
+            let v2 = parseFloat(input2.value);
+            if (!isNaN(v1) && isNaN(v2)) {
                 resultBox.value = "NaN";
-            } else if (!isNaN(val1) && !isNaN(val2)) {
-                resultBox.value = val1 + val2;
+            } else if (!isNaN(v1) && !isNaN(v2)) {
+                resultBox.value = v1 + v2;
             } else {
                 resultBox.value = "";
             }
         });
 
         input2.addEventListener("input", () => {
-            let val1 = parseFloat(input1.value);
-            let val2 = parseFloat(input2.value);
-
-            if (!isNaN(val1) && !isNaN(val2)) {
-                resultBox.value = val1 + val2;
+            let v1 = parseFloat(input1.value);
+            let v2 = parseFloat(input2.value);
+            if (!isNaN(v1) && !isNaN(v2)) {
+                resultBox.value = v1 + v2;
             } else {
                 resultBox.value = "NaN";
-            }
-        });
-    }
-
-    const weightInput = document.getElementById("weight");
-    const heightInput = document.getElementById("height");
-    const bmiResultBox = document.getElementById("bmi-result");
-    const bmiBtn = document.getElementById("bmi-btn");
-
-    if (bmiBtn) {
-        bmiBtn.addEventListener("click", () => {
-            let w = parseFloat(weightInput.value);
-            let h = parseFloat(heightInput.value);
-
-            if (!isNaN(w) && !isNaN(h) && h > 0) {
-                bmiResultBox.value = calculateBMI(w, h);
-            } else {
-                bmiResultBox.value = "Invalid Input";
             }
         });
     }
