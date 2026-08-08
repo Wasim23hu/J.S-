@@ -1,16 +1,29 @@
+/* =========================================================
+   JS Utility Toolkit — script.js
+   Each task is wired up independently once the DOM is ready.
+   ========================================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
 
+  /* ---------- small helper ---------- */
   function setOutput(el, text, state) {
-    el.textContent = text;
-    el.classList.remove("is-empty", "is-error");
-    if (state) el.classList.add(state);
+    const valueEl = el.querySelector(".result-value") || el;
+    valueEl.textContent = text;
+    valueEl.classList.remove("is-empty", "is-error", "just-updated");
+    if (state) valueEl.classList.add(state);
+    // brief highlight flash so the update is easy to notice
+    void valueEl.offsetWidth; // restart animation if triggered again quickly
+    valueEl.classList.add("just-updated");
   }
 
+  /* =========================================================
+     TASK 1 — Age (years) to Days converter
+     ========================================================= */
   const ageInput = document.getElementById("ageInput");
   const ageOutput = document.getElementById("ageOutput");
 
   function ageToDays(years) {
-    return years * 365;
+    return years * 365; // simple average-year conversion
   }
 
   document.getElementById("ageBtn").addEventListener("click", () => {
@@ -23,6 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setOutput(ageOutput, `${years} year(s) = ${days} days`);
   });
 
+  /* =========================================================
+     TASK 2 — Hours to Seconds converter
+     ========================================================= */
   const hoursInput = document.getElementById("hoursInput");
   const hoursOutput = document.getElementById("hoursOutput");
 
@@ -40,6 +56,13 @@ document.addEventListener("DOMContentLoaded", () => {
     setOutput(hoursOutput, `${hours} hour(s) = ${seconds} seconds`);
   });
 
+  /* =========================================================
+     TASK 3 — Find the "next" number
+     Scenario A: the element that sits next to a target inside an array
+     Scenario B: the next number after a single value (integer vs float)
+     ========================================================= */
+
+  // --- Scenario A: next value inside an array ---
   const arrayInput = document.getElementById("arrayInput");
   const arrayTarget = document.getElementById("arrayTarget");
   const arrayOutput = document.getElementById("arrayOutput");
@@ -77,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // --- Scenario B: next number after a single value ---
   const singleInput = document.getElementById("singleInput");
   const singleOutput = document.getElementById("singleOutput");
 
@@ -85,6 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isInteger) {
       return { next: value + 1, type: "integer" };
     }
+    // For a float, "next" is taken as one step up at the same decimal precision.
     const decimals = (value.toString().split(".")[1] || "").length;
     const step = 1 / Math.pow(10, decimals);
     const next = parseFloat((value + step).toFixed(decimals));
@@ -104,6 +129,9 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
 
+  /* =========================================================
+     TASK 4 — Capitalize a lowercase name
+     ========================================================= */
   const nameInput = document.getElementById("nameInput");
   const nameOutput = document.getElementById("nameOutput");
 
@@ -128,6 +156,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setOutput(nameOutput, capitalizeName(raw));
   });
 
+  /* =========================================================
+     TASK 5 — BMI Calculator
+     ========================================================= */
   const weightInput = document.getElementById("weightInput");
   const heightInput = document.getElementById("heightInput");
   const bmiOutput = document.getElementById("bmiOutput");
@@ -156,6 +187,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setOutput(bmiOutput, `BMI = ${bmi.toFixed(2)} → ${bmiCategory(bmi)}`);
   });
 
+  /* =========================================================
+     TASK 6 — Random array generator + first/last element picker
+     ========================================================= */
   const genArrayBtn = document.getElementById("genArrayBtn");
   const genArrayOutput = document.getElementById("genArrayOutput");
   const endsOutput = document.getElementById("endsOutput");
@@ -175,15 +209,21 @@ document.addEventListener("DOMContentLoaded", () => {
     setOutput(endsOutput, `First element: ${ends.first}  |  Last element: ${ends.last}`);
   });
 
+  /* =========================================================
+     TASK 7 — Live adder across three text boxes (event handling)
+     ========================================================= */
   const box1 = document.getElementById("box1");
   const box2 = document.getElementById("box2");
   const box3 = document.getElementById("box3");
 
   function updateSum() {
-    const a = parseFloat(box1.value);
+    const a = parseFloat(box1.value); // parseFloat("") is NaN by design
     const b = parseFloat(box2.value);
-    const sum = a + b;
+    const sum = a + b; // NaN propagates until both boxes hold a number
     box3.value = isNaN(sum) ? "NaN" : sum;
+    box3.classList.remove("just-updated");
+    void box3.offsetWidth;
+    box3.classList.add("just-updated");
   }
 
   box1.addEventListener("input", updateSum);
