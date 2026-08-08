@@ -1,191 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JS Utility Toolkit — Web Engineering Lab</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Tasks Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="grid-backdrop" aria-hidden="true"></div>
+    <div class="page-wrapper">
+        
+        <!-- Task 1 -->
+        <section class="task-card">
+            <div class="sheet-badge">SHEET 01 / 07</div>
+            <h2>Age → Days Converter</h2>
+            <p class="desc">Enter an age in years to convert it into an equivalent number of days.</p>
+            
+            <div class="input-row">
+                <div class="input-group">
+                    <label>AGE (YEARS)</label>
+                    <input type="text" id="t1-input" placeholder="e.g. 25">
+                </div>
+                <button onclick="runTask1()">Convert</button>
+            </div>
+            <div class="result-text" id="t1-result">Result will appear here.</div>
+        </section>
 
-<!-- ===================== TITLE BLOCK ===================== -->
-<header class="titleblock">
-  <div class="titleblock__mark">
-    <span class="mark-bracket">[</span>JS<span class="mark-bracket">]</span>
-  </div>
-  <div class="titleblock__main">
-    <h1>JavaScript Utility Toolkit</h1>
-    <p class="titleblock__sub">Interactive lab exercises — client-side logic &amp; event handling</p>
-  </div>
-  <table class="titleblock__data">
-    <tr><th>Project</th><td>Final Year — Web Engineering Lab</td></tr>
-    <tr><th>Student</th><td>Gulfam</td></tr>
-    <tr><th>Department</th><td>Computer Science, Hazara University Mansehra</td></tr>
-    <tr><th>Sheets</th><td>01 – 07</td></tr>
-    <tr><th>Rev.</th><td>A</td></tr>
-  </table>
-</header>
+        <!-- Task 2 -->
+        <section class="task-card">
+            <div class="sheet-badge">SHEET 02 / 07</div>
+            <h2>Hours → Seconds Converter</h2>
+            <p class="desc">Enter a duration in hours to convert it into seconds.</p>
+            
+            <div class="input-row">
+                <div class="input-group">
+                    <label>DURATION (HOURS)</label>
+                    <input type="text" id="t2-input" placeholder="e.g. 2.5">
+                </div>
+                <button onclick="runTask2()">Convert</button>
+            </div>
+            <div class="result-text" id="t2-result">Result will appear here.</div>
+        </section>
 
-<div class="layout">
+        <!-- Task 3 -->
+        <section class="task-card">
+            <div class="sheet-badge">SHEET 03 / 07</div>
+            <h2>Find the Next Number</h2>
+            <p class="desc">Two scenarios: (a) find the number inside an array, and (b) find next number for integer/float.</p>
+            
+            <!-- Scenario A -->
+            <div class="sub-scenario">
+                <p class="sub-title">Scenario A – Next value inside an array</p>
+                <div class="input-group full">
+                    <label>ARRAY (COMMA-SEPARATED)</label>
+                    <input type="text" id="t3-arr" placeholder="e.g. 4, 9, 15, 22, 30">
+                </div>
+                <div class="input-row" style="margin-top: 10px;">
+                    <div class="input-group">
+                        <label>NUMBER TO SEARCH FOR</label>
+                        <input type="text" id="t3-target" placeholder="e.g. 15">
+                    </div>
+                    <button onclick="runTask3A()">Find Next</button>
+                </div>
+            </div>
 
-  <!-- ===================== NAV ===================== -->
-  <nav class="tasknav" aria-label="Task navigation">
-    <a href="#task1"><span class="tasknav__no">01</span>Age → Days</a>
-    <a href="#task2"><span class="tasknav__no">02</span>Hours → Seconds</a>
-    <a href="#task3"><span class="tasknav__no">03</span>Next Number</a>
-    <a href="#task4"><span class="tasknav__no">04</span>Capitalize Name</a>
-    <a href="#task5"><span class="tasknav__no">05</span>BMI Calculator</a>
-    <a href="#task6"><span class="tasknav__no">06</span>Array Ends</a>
-    <a href="#task7"><span class="tasknav__no">07</span>Live Adder</a>
-  </nav>
+            <!-- Scenario B -->
+            <div class="sub-scenario" style="margin-top: 20px;">
+                <p class="sub-title">Scenario B – Next number after a single value</p>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>ENTER A NUMBER (INTEGER OR FLOAT)</label>
+                        <input type="text" id="t3-single" placeholder="e.g. 7 or 7.3">
+                    </div>
+                    <button onclick="runTask3B()">Find Next</button>
+                </div>
+            </div>
+            <div class="result-text" id="t3-result" style="margin-top: 15px;">Result will appear here.</div>
+        </section>
 
-  <!-- ===================== MAIN ===================== -->
-  <main class="sheets">
+        <!-- Task 4 -->
+        <section class="task-card">
+            <div class="sheet-badge">SHEET 04 / 07</div>
+            <h2>Capitalize Name</h2>
+            <p class="desc">Enter your name in lowercase only. The first letter will be capitalized automatically.</p>
+            
+            <div class="input-row">
+                <div class="input-group">
+                    <label>NAME (LOWERCASE ONLY)</label>
+                    <input type="text" id="t4-input" placeholder="e.g. gulfam khan">
+                </div>
+                <button onclick="runTask4()">Capitalize</button>
+            </div>
+            <div class="result-text" id="t4-result">Result will appear here.</div>
+        </section>
 
-    <!-- TASK 1 -->
-    <section class="sheet" id="task1">
-      <div class="sheet__tag">SHEET 01 / 07</div>
-      <h2>Age → Days Converter</h2>
-      <p class="sheet__brief">Enter an age in years to convert it into an equivalent number of days.</p>
-      <div class="panel">
-        <label for="ageInput">Age (years)</label>
-        <div class="control-row">
-          <input type="number" id="ageInput" placeholder="e.g. 21" min="0" step="any">
-          <button id="ageBtn" class="btn">Convert</button>
-        </div>
-        <div class="output" id="ageOutput">Result will appear here.</div>
-      </div>
-    </section>
+        <!-- Task 5 -->
+        <section class="task-card">
+            <div class="sheet-badge">SHEET 05 / 07</div>
+            <h2>BMI Calculator</h2>
+            <p class="desc">Enter your weight and height to calculate Body Mass Index.</p>
+            
+            <div class="input-row">
+                <div class="input-group">
+                    <label>WEIGHT (KG)</label>
+                    <input type="text" id="t5-weight" placeholder="e.g. 70">
+                </div>
+                <div class="input-group">
+                    <label>HEIGHT (M)</label>
+                    <input type="text" id="t5-height" placeholder="e.g. 1.75">
+                </div>
+                <button onclick="runTask5()">Calculate</button>
+            </div>
+            <div class="result-text" id="t5-result">Result will appear here.</div>
+        </section>
 
-    <!-- TASK 2 -->
-    <section class="sheet" id="task2">
-      <div class="sheet__tag">SHEET 02 / 07</div>
-      <h2>Hours → Seconds Converter</h2>
-      <p class="sheet__brief">Enter a duration in hours to convert it into seconds.</p>
-      <div class="panel">
-        <label for="hoursInput">Duration (hours)</label>
-        <div class="control-row">
-          <input type="number" id="hoursInput" placeholder="e.g. 2.5" min="0" step="any">
-          <button id="hoursBtn" class="btn">Convert</button>
-        </div>
-        <div class="output" id="hoursOutput">Result will appear here.</div>
-      </div>
-    </section>
+        <!-- Task 6 -->
+        <section class="task-card">
+            <div class="sheet-badge">SHEET 06 / 07</div>
+            <h2>Random Array Elements</h2>
+            <p class="desc">Randomly generate an array and pick the 1st and last element.</p>
+            
+            <div class="input-row">
+                <div class="input-group">
+                    <label>GENERATED ARRAY DISPLAY</label>
+                    <input type="text" id="t6-display" readonly placeholder="Click generate">
+                </div>
+                <button onclick="runTask6()">Generate</button>
+            </div>
+            <div class="result-text" id="t6-result">Result will appear here.</div>
+        </section>
 
-    <!-- TASK 3 -->
-    <section class="sheet" id="task3">
-      <div class="sheet__tag">SHEET 03 / 07</div>
-      <h2>Find the Next Number</h2>
-      <p class="sheet__brief">Two scenarios: (a) find the number that sits next to a target inside an array, and (b) find the "next number" after a single value, depending on whether it is an integer or a float.</p>
+        <!-- Task 7 -->
+        <section class="task-card">
+            <div class="sheet-badge">SHEET 07 / 07</div>
+            <h2>Addition & NaN Handling</h2>
+            <p class="desc">Enter numbers in text boxes. First box triggers NaN if second is empty.</p>
+            
+            <div class="input-group full" style="margin-bottom: 10px;">
+                <label>FIRST NUMBER</label>
+                <input type="text" id="num1" placeholder="Enter first number">
+            </div>
+            <div class="input-group full" style="margin-bottom: 10px;">
+                <label>SECOND NUMBER</label>
+                <input type="text" id="num2" placeholder="Enter second number">
+            </div>
+            <div class="input-group full">
+                <label>RESULT BOX</label>
+                <input type="text" id="result" readonly placeholder="Result">
+            </div>
+        </section>
 
-      <div class="panel">
-        <h3 class="panel__title">Scenario A — Next value inside an array</h3>
-        <label for="arrayInput">Array (comma-separated)</label>
-        <div class="control-row">
-          <input type="text" id="arrayInput" placeholder="e.g. 4, 9, 15, 22, 30">
-        </div>
-        <label for="arrayTarget">Number to search for</label>
-        <div class="control-row">
-          <input type="number" id="arrayTarget" placeholder="e.g. 15" step="any">
-          <button id="arrayBtn" class="btn">Find Next</button>
-        </div>
-        <div class="output" id="arrayOutput">Result will appear here.</div>
-      </div>
+    </div>
 
-      <div class="panel">
-        <h3 class="panel__title">Scenario B — Next number after a single value</h3>
-        <label for="singleInput">Enter a number (integer or float)</label>
-        <div class="control-row">
-          <input type="number" id="singleInput" placeholder="e.g. 7 or 7.3" step="any">
-          <button id="singleBtn" class="btn">Find Next</button>
-        </div>
-        <div class="output" id="singleOutput">Result will appear here.</div>
-      </div>
-    </section>
-
-    <!-- TASK 4 -->
-    <section class="sheet" id="task4">
-      <div class="sheet__tag">SHEET 04 / 07</div>
-      <h2>Capitalize Name</h2>
-      <p class="sheet__brief">Enter your name in lowercase only. The first letter of each name part will be capitalized automatically.</p>
-      <div class="panel">
-        <label for="nameInput">Name (lowercase only)</label>
-        <div class="control-row">
-          <input type="text" id="nameInput" placeholder="e.g. gulfam khan" pattern="[a-z\s]+">
-          <button id="nameBtn" class="btn">Capitalize</button>
-        </div>
-        <div class="output" id="nameOutput">Result will appear here.</div>
-      </div>
-    </section>
-
-    <!-- TASK 5 -->
-    <section class="sheet" id="task5">
-      <div class="sheet__tag">SHEET 05 / 07</div>
-      <h2>BMI Calculator</h2>
-      <p class="sheet__brief">Enter weight (kg) and height (m) to calculate Body Mass Index and its category.</p>
-      <div class="panel">
-        <label for="weightInput">Weight (kg)</label>
-        <div class="control-row">
-          <input type="number" id="weightInput" placeholder="e.g. 68" min="0" step="any">
-        </div>
-        <label for="heightInput">Height (m)</label>
-        <div class="control-row">
-          <input type="number" id="heightInput" placeholder="e.g. 1.72" min="0" step="any">
-          <button id="bmiBtn" class="btn">Calculate</button>
-        </div>
-        <div class="output" id="bmiOutput">Result will appear here.</div>
-      </div>
-    </section>
-
-    <!-- TASK 6 -->
-    <section class="sheet" id="task6">
-      <div class="sheet__tag">SHEET 06 / 07</div>
-      <h2>Random Array — First &amp; Last Element</h2>
-      <p class="sheet__brief">Generate a random array, then pick its first and last elements.</p>
-      <div class="panel">
-        <button id="genArrayBtn" class="btn">Generate Random Array</button>
-        <div class="output" id="genArrayOutput">Array will appear here.</div>
-        <div class="output" id="endsOutput">First / last will appear here.</div>
-      </div>
-    </section>
-
-    <!-- TASK 7 -->
-    <section class="sheet" id="task7">
-      <div class="sheet__tag">SHEET 07 / 07</div>
-      <h2>Live Adder (Event Handling)</h2>
-      <p class="sheet__brief">Type an integer into box one — box three shows <code>NaN</code> until box two also has a value, after which the sum updates live.</p>
-      <div class="panel">
-        <div class="triplet">
-          <div>
-            <label for="box1">Box 1</label>
-            <input type="number" id="box1" placeholder="Number 1">
-          </div>
-          <span class="triplet__op">+</span>
-          <div>
-            <label for="box2">Box 2</label>
-            <input type="number" id="box2" placeholder="Number 2">
-          </div>
-          <span class="triplet__op">=</span>
-          <div>
-            <label for="box3">Box 3 (result)</label>
-            <input type="text" id="box3" placeholder="NaN" readonly>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-</div>
-
-<footer class="stamp">
-  <p>Prepared by Gulfam — Computer Science, Hazara University Mansehra — Web Engineering Lab</p>
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
