@@ -1,6 +1,5 @@
 /* =========================================================
-   JS Utility Toolkit — confirmed design
-   Light, professional, card-based
+   JS Utility Toolkit — confirmed design (Gray Theme Update)
    ========================================================= */
 
 :root{
@@ -9,8 +8,8 @@
   --border:#e3e7f0;
   --ink:#161b2e;
   --ink-dim:#636b85;
-  --indigo:#3049c2;
-  --indigo-soft:#eef1fd;
+  --gray-accent:#4b5563;
+  --gray-soft:#f3f4f6;
   --teal:#0fa88a;
   --teal-soft:#e6f8f4;
   --error:#d8455b;
@@ -31,59 +30,10 @@ h3{ font-family:'Sora', sans-serif; margin:0 0 8px; font-size:1.08rem; }
 
 code{
   font-family:'JetBrains Mono', monospace;
-  background:var(--indigo-soft);
-  color:var(--indigo);
+  background:var(--gray-soft);
+  color:var(--gray-accent);
   padding:0.1em 0.4em;
   border-radius:4px;
-}
-
-/* ===================== NAVBAR ===================== */
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 48px;
-  border-bottom:1px solid var(--border);
-  background:var(--surface);
-  flex-wrap:wrap;
-  gap:12px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-family:'Sora', sans-serif;
-  font-weight:700;
-  font-size:1.05rem;
-}
-.brand__dot{
-  width:10px; height:10px; border-radius:3px;
-  background:var(--indigo);
-}
-
-.topbar__nav{
-  display:flex;
-  gap:28px;
-  font-size:0.88rem;
-  color:var(--ink-dim);
-  font-weight:500;
-}
-.topbar__nav a{
-  text-decoration:none;
-  color:inherit;
-}
-.topbar__nav a.active,
-.topbar__nav a:hover{ color:var(--indigo); font-weight:600; }
-
-.meta{
-  font-family:'JetBrains Mono', monospace;
-  font-size:0.72rem;
-  color:var(--ink-dim);
-  background:var(--indigo-soft);
-  padding:6px 12px;
-  border-radius:20px;
-  white-space:nowrap;
 }
 
 /* ===================== CARD GRID ===================== */
@@ -114,8 +64,8 @@ code{
 .card__no{
   font-family:'JetBrains Mono', monospace;
   font-size:0.72rem;
-  color:var(--indigo);
-  background:var(--indigo-soft);
+  color:var(--gray-accent);
+  background:var(--gray-soft);
   padding:4px 10px;
   border-radius:6px;
 }
@@ -123,7 +73,7 @@ code{
   min-width:38px; height:32px;
   padding:0 10px;
   border-radius:10px;
-  background:var(--indigo);
+  background:var(--gray-accent);
   display:flex; align-items:center; justify-content:center;
   color:#fff;
   font-family:'Sora', sans-serif;
@@ -150,19 +100,19 @@ code{
   color:var(--ink);
 }
 .card input:focus-visible{
-  outline:2px solid var(--indigo);
+  outline:2px solid var(--gray-accent);
   outline-offset:1px;
 }
 .card input[readonly]{
-  background:var(--indigo-soft);
-  color:var(--indigo);
+  background:var(--gray-soft);
+  color:var(--gray-accent);
   font-family:'JetBrains Mono', monospace;
   font-weight:600;
 }
 
 .card button{
   align-self:flex-start;
-  background:var(--indigo);
+  background:var(--gray-accent);
   color:#fff;
   border:none;
   padding:9px 18px;
@@ -173,7 +123,7 @@ code{
   cursor:pointer;
   transition:background 0.15s ease, transform 0.1s ease;
 }
-.card button:hover{ background:#2539a0; }
+.card button:hover{ background:#374151; }
 .card button:active{ transform:translateY(1px); }
 .card button:focus-visible{ outline:2px solid var(--ink); outline-offset:2px; }
 
@@ -202,7 +152,7 @@ code{
   display:block;
   font-family:'JetBrains Mono', monospace;
   font-size:0.72rem;
-  color:var(--indigo);
+  color:var(--gray-accent);
   text-transform:uppercase;
   letter-spacing:0.03em;
   margin-bottom:10px;
@@ -219,7 +169,7 @@ code{
 .triplet__op{
   font-family:'JetBrains Mono', monospace;
   font-size:1.1rem;
-  color:var(--indigo);
+  color:var(--gray-accent);
   font-weight:600;
 }
 
@@ -240,8 +190,6 @@ code{
 }
 
 @media (max-width:640px){
-  .topbar{ padding:16px 20px; }
-  .topbar__nav{ gap:16px; }
   .cards{ grid-template-columns:1fr; padding:24px 20px 40px; }
   .triplet{ flex-direction:column; align-items:stretch; }
   .triplet__op{ align-self:center; }
