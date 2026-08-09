@@ -1,6 +1,5 @@
 /* =========================================================
-   JS Utility Toolkit — confirmed design
-   Light, professional, card-based
+   JS Utility Toolkit — updated design
    ========================================================= */
 
 :root{
@@ -17,7 +16,9 @@
   --radius:14px;
 }
 
-*{ box-sizing:border-box; }
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
@@ -30,7 +31,11 @@ body{
   line-height:1.55;
 }
 
-h3{ font-family:'Sora', sans-serif; margin:0 0 8px; font-size:1.08rem; }
+h3{
+  font-family:'Sora', sans-serif;
+  margin:0 0 8px;
+  font-size:1.08rem;
+}
 
 code{
   font-family:'JetBrains Mono', monospace;
@@ -41,6 +46,7 @@ code{
 }
 
 /* ===================== NAVBAR ===================== */
+
 .topbar{
   display:flex;
   justify-content:space-between;
@@ -57,6 +63,7 @@ code{
   z-index:10;
   transition:box-shadow 0.25s ease;
 }
+
 .topbar.is-scrolled{
   box-shadow:0 6px 20px rgba(22,27,46,0.06);
 }
@@ -69,8 +76,11 @@ code{
   font-weight:700;
   font-size:1.05rem;
 }
+
 .brand__dot{
-  width:10px; height:10px; border-radius:3px;
+  width:10px;
+  height:10px;
+  border-radius:3px;
   background:var(--indigo);
 }
 
@@ -81,12 +91,17 @@ code{
   color:var(--ink-dim);
   font-weight:500;
 }
+
 .topbar__nav a{
   text-decoration:none;
   color:inherit;
 }
+
 .topbar__nav a.active,
-.topbar__nav a:hover{ color:var(--indigo); font-weight:600; }
+.topbar__nav a:hover{
+  color:var(--indigo);
+  font-weight:600;
+}
 
 .meta{
   font-family:'JetBrains Mono', monospace;
@@ -99,6 +114,7 @@ code{
 }
 
 /* ===================== CARD GRID ===================== */
+
 .cards{
   padding:40px 48px 60px;
   display:grid;
@@ -106,14 +122,38 @@ code{
   gap:20px;
   align-items:stretch;
 }
-.cards .card:nth-child(1){ animation-delay:0.02s; }
-.cards .card:nth-child(2){ animation-delay:0.06s; }
-.cards .card:nth-child(3){ animation-delay:0.10s; }
-.cards .card:nth-child(4){ animation-delay:0.14s; }
-.cards .card:nth-child(5){ animation-delay:0.18s; }
-.cards .card:nth-child(6){ animation-delay:0.22s; }
-.cards .card:nth-child(7){ animation-delay:0.26s; }
-.cards .card:nth-child(8){ animation-delay:0.30s; }
+
+.cards .card:nth-child(1){
+  animation-delay:0.02s;
+}
+
+.cards .card:nth-child(2){
+  animation-delay:0.06s;
+}
+
+.cards .card:nth-child(3){
+  animation-delay:0.10s;
+}
+
+.cards .card:nth-child(4){
+  animation-delay:0.14s;
+}
+
+.cards .card:nth-child(5){
+  animation-delay:0.18s;
+}
+
+.cards .card:nth-child(6){
+  animation-delay:0.22s;
+}
+
+.cards .card:nth-child(7){
+  animation-delay:0.26s;
+}
+
+.cards .card:nth-child(8){
+  animation-delay:0.30s;
+}
 
 .card{
   background:var(--surface);
@@ -124,22 +164,34 @@ code{
   display:flex;
   flex-direction:column;
   min-height:280px;
-  transition:box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
   opacity:0;
   transform:translateY(16px);
 }
+
 .card.is-visible{
   animation:cardIn 0.5s cubic-bezier(.2,.7,.3,1) forwards;
 }
+
 @keyframes cardIn{
-  to{ opacity:1; transform:translateY(0); }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
+
 .card:hover{
   box-shadow:0 10px 24px rgba(22,27,46,0.08);
   transform:translateY(-3px);
   border-color:#d3d9e6;
 }
-.card.is-visible:hover{ transform:translateY(-3px); }
+
+.card.is-visible:hover{
+  transform:translateY(-3px);
+}
 
 .card__top{
   display:flex;
@@ -147,6 +199,7 @@ code{
   align-items:flex-start;
   margin-bottom:16px;
 }
+
 .card__no{
   font-family:'JetBrains Mono', monospace;
   font-size:0.72rem;
@@ -155,13 +208,17 @@ code{
   padding:4px 10px;
   border-radius:6px;
 }
+
 .card__icon{
-  width:22px; height:22px;
+  width:22px;
+  height:22px;
   color:var(--ink-dim);
   flex-shrink:0;
 }
+
 .card__icon svg{
-  width:22px; height:22px;
+  width:22px;
+  height:22px;
 }
 
 .card p{
@@ -182,24 +239,35 @@ code{
   color:var(--ink);
   transition:border-color 0.2s ease, box-shadow 0.2s ease;
 }
+
 .card input:focus-visible{
   outline:none;
   border-color:var(--indigo);
   box-shadow:0 0 0 3px var(--indigo-soft);
 }
+
 .card input[readonly]{
   background:var(--indigo-soft);
   color:var(--indigo);
   font-family:'JetBrains Mono', monospace;
   font-weight:600;
 }
+
 .card input[readonly].just-updated{
   animation:inputFlash 0.7s ease;
 }
+
 @keyframes inputFlash{
-  0%{ background:#d7dade; }
-  100%{ background:var(--indigo-soft); }
+  0%{
+    background:#d7dade;
+  }
+
+  100%{
+    background:var(--indigo-soft);
+  }
 }
+
+/* ===================== BUTTONS ===================== */
 
 .card button{
   align-self:flex-start;
@@ -217,53 +285,67 @@ code{
   cursor:pointer;
   position:relative;
   overflow:hidden;
-  transition:background 0.2s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.15s cubic-bezier(.34,1.56,.64,1),
+    box-shadow 0.2s ease;
 }
-.btn__label, .btn__arrow{ position:relative; z-index:1; }
-.btn__arrow{
-  width:14px; height:14px;
-  flex-shrink:0;
-  transform:translateX(-2px);
-  transition:transform 0.25s cubic-bezier(.34,1.56,.64,1);
+
+.btn__label{
+  position:relative;
+  z-index:1;
 }
-.card button:hover .btn__arrow{
-  transform:translateX(1px);
-}
+
 .card button:hover{
   background:#d3d8e4;
   transform:translateY(-2px);
   box-shadow:0 6px 14px rgba(43,48,56,0.15);
 }
+
 .card button:active{
   transform:translateY(0) scale(0.97);
   box-shadow:0 2px 6px rgba(43,48,56,0.12);
 }
-.card button:focus-visible{ outline:2px solid var(--ink); outline-offset:2px; }
 
-/* click ripple */
+.card button:focus-visible{
+  outline:2px solid var(--ink);
+  outline-offset:2px;
+}
+
+/* ===================== BUTTON EFFECT ===================== */
+
 .card button::after{
   content:"";
   position:absolute;
   inset:0;
   z-index:0;
   border-radius:inherit;
-  background:radial-gradient(circle, rgba(43,48,56,0.35) 0%, transparent 70%);
+  background:radial-gradient(
+    circle,
+    rgba(43,48,56,0.35) 0%,
+    transparent 70%
+  );
   opacity:0;
   transform:scale(0.4);
   transition:opacity 0.5s ease, transform 0.5s ease;
 }
+
 .card button:active::after{
   opacity:1;
   transform:scale(1.6);
   transition:opacity 0s, transform 0s;
 }
 
+/* ===================== RESULT ===================== */
+
+/* Dashed horizontal line removed */
 .result{
   margin-top:auto;
   padding-top:12px;
-  border-top:1px dashed var(--border);
+  border-top:none;
   min-height:1.3em;
 }
+
 .result-label{
   display:block;
   font-family:'JetBrains Mono', monospace;
@@ -273,6 +355,7 @@ code{
   letter-spacing:0.06em;
   margin-bottom:4px;
 }
+
 .result-value{
   display:block;
   font-family:'JetBrains Mono', monospace;
@@ -281,30 +364,51 @@ code{
   word-break:break-word;
   border-radius:6px;
 }
+
 .result-value.just-updated{
   animation:resultFlash 0.7s ease;
 }
+
 @keyframes resultFlash{
-  0%{ background:var(--indigo-soft); padding:2px 6px; margin:-2px -6px; }
-  100%{ background:transparent; padding:2px 6px; margin:-2px -6px; }
+  0%{
+    background:var(--indigo-soft);
+    padding:2px 6px;
+    margin:-2px -6px;
+  }
+
+  100%{
+    background:transparent;
+    padding:2px 6px;
+    margin:-2px -6px;
+  }
 }
+
+/* Empty output border removed */
 .result-value.is-empty{
   min-height:34px;
-  border:1px dashed var(--border);
+  border:none;
   border-radius:8px;
   background:#fafbfd;
   color:var(--ink-dim);
 }
-.result-value.is-error{ color:var(--error); }
 
-/* Task 3 sub-scenarios */
+.result-value.is-error{
+  color:var(--error);
+}
+
+/* ===================== TASK 3 SUB-SCENARIOS ===================== */
+
 .subblock{
-  border:1px dashed var(--border);
+  border:none;
   border-radius:10px;
   padding:16px;
   margin-bottom:14px;
 }
-.subblock:last-child{ margin-bottom:0; }
+
+.subblock:last-child{
+  margin-bottom:0;
+}
+
 .subblock__label{
   display:block;
   font-family:'JetBrains Mono', monospace;
@@ -315,14 +419,20 @@ code{
   margin-bottom:10px;
 }
 
-/* Task 7 triplet */
+/* ===================== TASK 7 ===================== */
+
 .triplet{
   display:flex;
   align-items:center;
   gap:12px;
   flex-wrap:wrap;
 }
-.triplet input{ flex:1 1 140px; margin-bottom:0; }
+
+.triplet input{
+  flex:1 1 140px;
+  margin-bottom:0;
+}
+
 .triplet__op{
   font-family:'JetBrains Mono', monospace;
   font-size:1.1rem;
@@ -331,10 +441,12 @@ code{
 }
 
 /* ===================== FOOTER ===================== */
+
 .pagefoot{
   text-align:center;
   padding:24px 20px 40px;
 }
+
 .pagefoot p{
   font-family:'JetBrains Mono', monospace;
   font-size:0.75rem;
@@ -342,22 +454,57 @@ code{
 }
 
 /* ===================== RESPONSIVE ===================== */
+
 @media (max-width:960px){
-  .cards{ grid-template-columns:repeat(2, 1fr); }
+
+  .cards{
+    grid-template-columns:repeat(2, 1fr);
+  }
+
 }
 
 @media (max-width:640px){
-  .topbar{ padding:16px 20px; }
-  .topbar__nav{ gap:16px; }
-  .cards{ grid-template-columns:1fr; padding:24px 20px 40px; }
-  .triplet{ flex-direction:column; align-items:stretch; }
-  .triplet__op{ align-self:center; }
+
+  .topbar{
+    padding:16px 20px;
+  }
+
+  .topbar__nav{
+    gap:16px;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+    padding:24px 20px 40px;
+  }
+
+  .triplet{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .triplet__op{
+    align-self:center;
+  }
+
 }
 
 @media (prefers-reduced-motion: reduce){
+
   .card,
   .card button,
-  .card input{ transition:none; }
-  .card:hover{ transform:none; }
-  .card{ animation:none !important; opacity:1; transform:none; }
+  .card input{
+    transition:none;
+  }
+
+  .card:hover{
+    transform:none;
+  }
+
+  .card{
+    animation:none !important;
+    opacity:1;
+    transform:none;
+  }
+
 }
