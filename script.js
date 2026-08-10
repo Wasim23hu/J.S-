@@ -1,7 +1,13 @@
+/* =========================================================
+   JS Utility Toolkit
+   ========================================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
 
 
-  /* ---------- OUTPUT HELPER ---------- */
+  /* =========================================================
+     OUTPUT HELPER
+     ========================================================= */
 
   function setOutput(el, text, state) {
 
@@ -27,8 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     TASK 1
-     Age to Days
+     TASK 01 — AGE TO DAYS
      ========================================================= */
 
   const ageInput =
@@ -75,8 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     TASK 2
-     Hours to Seconds
+     TASK 02 — HOURS TO SECONDS
      ========================================================= */
 
   const hoursInput =
@@ -123,8 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     TASK 3A
-     Next Number In Array
+     TASK 03A — NEXT NUMBER IN ARRAY
      ========================================================= */
 
   const arrayInput =
@@ -143,14 +146,20 @@ document.addEventListener("DOMContentLoaded", () => {
       arr.indexOf(target);
 
     if (index === -1) {
-      return { found:false };
+
+      return {
+        found:false
+      };
+
     }
 
     if (index === arr.length - 1) {
+
       return {
         found:true,
         hasNext:false
       };
+
     }
 
     return {
@@ -218,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setOutput(
           arrayOutput,
-          `${target} is the last element. No number follows it.`
+          `${target} is the last element — no number follows it.`
         );
 
       }
@@ -236,8 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     TASK 3B
-     Next Number Single Value
+     TASK 03B — NEXT NUMBER SINGLE VALUE
      ========================================================= */
 
   const singleInput =
@@ -266,8 +274,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const decimals =
       (value.toString().split(".")[1] || "").length;
 
+
     const step =
       1 / Math.pow(10, decimals);
+
 
     const next =
       parseFloat(
@@ -309,15 +319,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setOutput(
         singleOutput,
-        `${value} is a ${result.type}. Next number is ${result.next}`
+        `${value} is a ${result.type} → next number is ${result.next}`
       );
 
     });
 
 
   /* =========================================================
-     TASK 4
-     Capitalize Name
+     TASK 04 — CAPITALIZE NAME
      ========================================================= */
 
   const nameInput =
@@ -334,8 +343,8 @@ document.addEventListener("DOMContentLoaded", () => {
       .split(/\s+/)
       .map(
         part =>
-          part.charAt(0).toUpperCase() +
-          part.slice(1)
+          part.charAt(0).toUpperCase()
+          + part.slice(1)
       )
       .join(" ");
 
@@ -383,8 +392,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     TASK 5
-     BMI Calculator
+     TASK 05 — BMI CALCULATOR
      ========================================================= */
 
   const weightInput =
@@ -455,15 +463,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setOutput(
         bmiOutput,
-        `BMI = ${bmi.toFixed(2)}. ${bmiCategory(bmi)}`
+        `BMI = ${bmi.toFixed(2)} → ${bmiCategory(bmi)}`
       );
 
     });
 
 
   /* =========================================================
-     TASK 6
-     Random Array
+     TASK 06 — RANDOM ARRAY
      ========================================================= */
 
   const genArrayBtn =
@@ -483,7 +490,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return Array.from(
       { length },
-      () => Math.floor(Math.random() * max)
+      () =>
+        Math.floor(
+          Math.random() * max
+        )
     );
 
   }
@@ -527,8 +537,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     TASK 7
-     Live Adder
+     TASK 07 — LIVE ADDER
      ========================================================= */
 
   const box1 =
@@ -549,12 +558,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const b =
       parseFloat(box2.value);
 
-    const sum =
-      a + b;
 
+    if (
+      isNaN(a) ||
+      isNaN(b)
+    ) {
 
-    box3.value =
-      isNaN(sum) ? "NaN" : sum;
+      box3.value =
+        "Result will appear here";
+
+    }
+
+    else {
+
+      box3.value =
+        a + b;
+
+    }
 
 
     box3.classList.remove(
