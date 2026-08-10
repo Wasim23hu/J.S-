@@ -1,29 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  function setOutput(el, text, state) {
 
-    const valueEl =
-      el.querySelector(".result-value") || el;
+  /* =========================================================
+     OUTPUT HELPER
+     ========================================================= */
 
-    valueEl.textContent = text;
+  function setOutput(element, text, state) {
 
-    valueEl.classList.remove(
+    const valueElement =
+      element.querySelector(".result-value") || element;
+
+    valueElement.textContent = text;
+
+    valueElement.classList.remove(
       "is-empty",
       "is-error",
       "just-updated"
     );
 
     if (state) {
-      valueEl.classList.add(state);
+      valueElement.classList.add(state);
     }
 
-    void valueEl.offsetWidth;
+    void valueElement.offsetWidth;
 
-    valueEl.classList.add("just-updated");
+    valueElement.classList.add("just-updated");
   }
 
 
-  /* TASK 01 */
+  /* =========================================================
+     TASK 1
+     AGE TO DAYS
+     ========================================================= */
 
   const ageInput =
     document.getElementById("ageInput");
@@ -46,22 +54,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setOutput(
           ageOutput,
-          "Please enter a valid, non-negative age.",
+          "Please enter a valid age.",
           "is-error"
         );
 
         return;
       }
 
+      const days =
+        ageToDays(years);
+
       setOutput(
         ageOutput,
-        `${years} year(s) = ${ageToDays(years)} days`
+        `${years} year(s) = ${days} days`
       );
 
     });
 
 
-  /* TASK 02 */
+  /* =========================================================
+     TASK 2
+     HOURS TO SECONDS
+     ========================================================= */
 
   const hoursInput =
     document.getElementById("hoursInput");
@@ -84,22 +98,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setOutput(
           hoursOutput,
-          "Please enter a valid, non-negative duration.",
+          "Please enter a valid duration.",
           "is-error"
         );
 
         return;
       }
 
+      const seconds =
+        hoursToSeconds(hours);
+
       setOutput(
         hoursOutput,
-        `${hours} hour(s) = ${hoursToSeconds(hours)} seconds`
+        `${hours} hour(s) = ${seconds} seconds`
       );
 
     });
 
 
-  /* TASK 03 A */
+  /* =========================================================
+     TASK 3 A
+     NEXT NUMBER IN ARRAY
+     ========================================================= */
 
   const arrayInput =
     document.getElementById("arrayInput");
@@ -110,12 +130,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const arrayOutput =
     document.getElementById("arrayOutput");
 
+
   function findNextInArray(arr, target) {
 
-    const index = arr.indexOf(target);
+    const index =
+      arr.indexOf(target);
 
     if (index === -1) {
-      return { found:false };
+      return {
+        found:false
+      };
     }
 
     if (index === arr.length - 1) {
@@ -132,6 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
+
   document
     .getElementById("arrayBtn")
     .addEventListener("click", () => {
@@ -139,36 +164,44 @@ document.addEventListener("DOMContentLoaded", () => {
       const arr =
         arrayInput.value
           .split(",")
-          .map(v => parseFloat(v.trim()))
-          .filter(v => !isNaN(v));
+          .map(value =>
+            parseFloat(value.trim())
+          )
+          .filter(value =>
+            !isNaN(value)
+          );
 
       const target =
         parseFloat(arrayTarget.value);
+
 
       if (arr.length === 0) {
 
         setOutput(
           arrayOutput,
-          "Please enter a valid comma-separated array.",
+          "Please enter array numbers.",
           "is-error"
         );
 
         return;
       }
+
 
       if (isNaN(target)) {
 
         setOutput(
           arrayOutput,
-          "Please enter a number to search for.",
+          "Please enter a target number.",
           "is-error"
         );
 
         return;
       }
 
+
       const result =
         findNextInArray(arr, target);
+
 
       if (!result.found) {
 
@@ -178,18 +211,22 @@ document.addEventListener("DOMContentLoaded", () => {
           "is-error"
         );
 
-      } else if (!result.hasNext) {
+      }
+
+      else if (!result.hasNext) {
 
         setOutput(
           arrayOutput,
-          `${target} is the last element — no number follows it.`
+          `${target} is the last element`
         );
 
-      } else {
+      }
+
+      else {
 
         setOutput(
           arrayOutput,
-          `The number next to ${target} is ${result.next}`
+          `The next number after ${target} is ${result.next}`
         );
 
       }
@@ -197,7 +234,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  /* TASK 03 B */
+  /* =========================================================
+     TASK 3 B
+     NEXT NUMBER SINGLE VALUE
+     ========================================================= */
 
   const singleInput =
     document.getElementById("singleInput");
@@ -205,9 +245,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const singleOutput =
     document.getElementById("singleOutput");
 
+
   function findNextSingle(value) {
 
-    if (Number.isInteger(value)) {
+    const isInteger =
+      Number.isInteger(value);
+
+    if (isInteger) {
 
       return {
         next:value + 1,
@@ -216,8 +260,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+
+    const decimalPart =
+      value.toString().split(".")[1] || "";
+
     const decimals =
-      (value.toString().split(".")[1] || "").length;
+      decimalPart.length;
 
     const step =
       1 / Math.pow(10, decimals);
@@ -228,10 +276,11 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
     return {
-      next,
+      next:next,
       type:"float"
     };
   }
+
 
   document
     .getElementById("singleBtn")
@@ -244,25 +293,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setOutput(
           singleOutput,
-          "Please enter a valid number.",
+          "Please enter any number.",
           "is-error"
         );
 
         return;
       }
 
+
       const result =
         findNextSingle(value);
 
+
       setOutput(
         singleOutput,
-        `${value} is a ${result.type} → next number is ${result.next}`
+        `${value} is a ${result.type}. Next number is ${result.next}`
       );
 
     });
 
 
-  /* TASK 04 */
+  /* =========================================================
+     TASK 4
+     CAPITALIZE NAME
+     ========================================================= */
 
   const nameInput =
     document.getElementById("nameInput");
@@ -270,18 +324,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const nameOutput =
     document.getElementById("nameOutput");
 
+
   function capitalizeName(name) {
 
     return name
       .trim()
       .split(/\s+/)
-      .map(
-        part =>
-          part.charAt(0).toUpperCase()
-          + part.slice(1)
+      .map(part =>
+        part.charAt(0).toUpperCase() +
+        part.slice(1)
       )
       .join(" ");
   }
+
 
   document
     .getElementById("nameBtn")
@@ -289,6 +344,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const raw =
         nameInput.value.trim();
+
 
       if (raw === "") {
 
@@ -301,16 +357,18 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+
       if (raw !== raw.toLowerCase()) {
 
         setOutput(
           nameOutput,
-          "Please enter the name in lowercase only.",
+          "Please enter the name in lowercase.",
           "is-error"
         );
 
         return;
       }
+
 
       setOutput(
         nameOutput,
@@ -320,7 +378,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  /* TASK 05 */
+  /* =========================================================
+     TASK 5
+     BMI CALCULATOR
+     ========================================================= */
 
   const weightInput =
     document.getElementById("weightInput");
@@ -331,23 +392,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const bmiOutput =
     document.getElementById("bmiOutput");
 
-  function calculateBMI(weightKg, heightM) {
-    return weightKg / (heightM * heightM);
+
+  function calculateBMI(weight, height) {
+
+    return weight /
+      (height * height);
   }
+
 
   function bmiCategory(bmi) {
 
-    if (bmi < 18.5)
+    if (bmi < 18.5) {
       return "Underweight";
+    }
 
-    if (bmi < 25)
+    if (bmi < 25) {
       return "Normal weight";
+    }
 
-    if (bmi < 30)
+    if (bmi < 30) {
       return "Overweight";
+    }
 
     return "Obese";
   }
+
 
   document
     .getElementById("bmiBtn")
@@ -359,6 +428,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const height =
         parseFloat(heightInput.value);
 
+
       if (
         isNaN(weight) ||
         isNaN(height) ||
@@ -368,25 +438,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setOutput(
           bmiOutput,
-          "Please enter a valid weight (kg) and height (m).",
+          "Please enter valid weight and height.",
           "is-error"
         );
 
         return;
       }
 
+
       const bmi =
         calculateBMI(weight, height);
 
+
       setOutput(
         bmiOutput,
-        `BMI = ${bmi.toFixed(2)} → ${bmiCategory(bmi)}`
+        `BMI = ${bmi.toFixed(2)}. ${bmiCategory(bmi)}`
       );
 
     });
 
 
-  /* TASK 06 */
+  /* =========================================================
+     TASK 6
+     RANDOM ARRAY
+     ========================================================= */
 
   const genArrayBtn =
     document.getElementById("genArrayBtn");
@@ -397,6 +472,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const endsOutput =
     document.getElementById("endsOutput");
 
+
   function generateRandomArray(
     length = 8,
     max = 100
@@ -404,9 +480,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return Array.from(
       { length },
-      () => Math.floor(Math.random() * max)
+      () =>
+        Math.floor(
+          Math.random() * max
+        )
     );
   }
+
 
   function pickFirstAndLast(arr) {
 
@@ -416,28 +496,38 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  genArrayBtn.addEventListener("click", () => {
 
-    const arr =
-      generateRandomArray();
+  genArrayBtn.addEventListener(
+    "click",
+    () => {
 
-    setOutput(
-      genArrayOutput,
-      `Array: [${arr.join(", ")}]`
-    );
-
-    const ends =
-      pickFirstAndLast(arr);
-
-    setOutput(
-      endsOutput,
-      `First element: ${ends.first} | Last element: ${ends.last}`
-    );
-
-  });
+      const arr =
+        generateRandomArray();
 
 
-  /* TASK 07 */
+      setOutput(
+        genArrayOutput,
+        `[${arr.join(", ")}]`
+      );
+
+
+      const ends =
+        pickFirstAndLast(arr);
+
+
+      setOutput(
+        endsOutput,
+        `First: ${ends.first}  Last: ${ends.last}`
+      );
+
+    }
+  );
+
+
+  /* =========================================================
+     TASK 7
+     LIVE ADDER
+     ========================================================= */
 
   const box1 =
     document.getElementById("box1");
@@ -448,30 +538,70 @@ document.addEventListener("DOMContentLoaded", () => {
   const box3 =
     document.getElementById("box3");
 
+
   function updateSum() {
 
-    const a =
-      parseFloat(box1.value);
+    const firstValue =
+      box1.value.trim();
 
-    const b =
-      parseFloat(box2.value);
+    const secondValue =
+      box2.value.trim();
 
-    if (isNaN(a) || isNaN(b)) {
 
-      box3.value = "";
+    /*
+      Agar dono boxes mein number nahi hain
+      to Box 3 mein NaN rahega.
+    */
 
-      box3.placeholder =
-        "Result will appear here";
+    if (
+      firstValue === "" ||
+      secondValue === ""
+    ) {
 
-    } else {
+      box3.value = "NaN";
 
-      box3.value = a + b;
-
+      return;
     }
 
+
+    const firstNumber =
+      parseFloat(firstValue);
+
+    const secondNumber =
+      parseFloat(secondValue);
+
+
+    if (
+      isNaN(firstNumber) ||
+      isNaN(secondNumber)
+    ) {
+
+      box3.value = "NaN";
+
+      return;
+    }
+
+
+    box3.value =
+      firstNumber + secondNumber;
   }
 
-  box1.addEventListener("input", updateSum);
-  box2.addEventListener("input", updateSum);
+
+  box1.addEventListener(
+    "input",
+    updateSum
+  );
+
+  box2.addEventListener(
+    "input",
+    updateSum
+  );
+
+
+  /*
+    Page load hote hi Box 3 mein NaN show hoga.
+  */
+
+  updateSum();
 
 });
