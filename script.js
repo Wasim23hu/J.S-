@@ -1,13 +1,4 @@
-/* =========================================================
-   JS Utility Toolkit
-   ========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
-
-
-  /* =========================================================
-     OUTPUT HELPER
-     ========================================================= */
 
   function setOutput(el, text, state) {
 
@@ -32,9 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =========================================================
-     TASK 01 — AGE TO DAYS
-     ========================================================= */
+  /* TASK 01 */
 
   const ageInput =
     document.getElementById("ageInput");
@@ -42,13 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const ageOutput =
     document.getElementById("ageOutput");
 
-
   function ageToDays(years) {
-
     return years * 365;
-
   }
-
 
   document
     .getElementById("ageBtn")
@@ -68,20 +53,15 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const days =
-        ageToDays(years);
-
       setOutput(
         ageOutput,
-        `${years} year(s) = ${days} days`
+        `${years} year(s) = ${ageToDays(years)} days`
       );
 
     });
 
 
-  /* =========================================================
-     TASK 02 — HOURS TO SECONDS
-     ========================================================= */
+  /* TASK 02 */
 
   const hoursInput =
     document.getElementById("hoursInput");
@@ -89,13 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const hoursOutput =
     document.getElementById("hoursOutput");
 
-
   function hoursToSeconds(hours) {
-
     return hours * 3600;
-
   }
-
 
   document
     .getElementById("hoursBtn")
@@ -115,20 +91,15 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const seconds =
-        hoursToSeconds(hours);
-
       setOutput(
         hoursOutput,
-        `${hours} hour(s) = ${seconds} seconds`
+        `${hours} hour(s) = ${hoursToSeconds(hours)} seconds`
       );
 
     });
 
 
-  /* =========================================================
-     TASK 03A — NEXT NUMBER IN ARRAY
-     ========================================================= */
+  /* TASK 03 A */
 
   const arrayInput =
     document.getElementById("arrayInput");
@@ -139,27 +110,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const arrayOutput =
     document.getElementById("arrayOutput");
 
-
   function findNextInArray(arr, target) {
 
-    const index =
-      arr.indexOf(target);
+    const index = arr.indexOf(target);
 
     if (index === -1) {
-
-      return {
-        found:false
-      };
-
+      return { found:false };
     }
 
     if (index === arr.length - 1) {
-
       return {
         found:true,
         hasNext:false
       };
-
     }
 
     return {
@@ -167,9 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hasNext:true,
       next:arr[index + 1]
     };
-
   }
-
 
   document
     .getElementById("arrayBtn")
@@ -184,7 +145,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const target =
         parseFloat(arrayTarget.value);
 
-
       if (arr.length === 0) {
 
         setOutput(
@@ -195,7 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return;
       }
-
 
       if (isNaN(target)) {
 
@@ -208,10 +167,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-
       const result =
         findNextInArray(arr, target);
-
 
       if (!result.found) {
 
@@ -221,18 +178,14 @@ document.addEventListener("DOMContentLoaded", () => {
           "is-error"
         );
 
-      }
-
-      else if (!result.hasNext) {
+      } else if (!result.hasNext) {
 
         setOutput(
           arrayOutput,
           `${target} is the last element — no number follows it.`
         );
 
-      }
-
-      else {
+      } else {
 
         setOutput(
           arrayOutput,
@@ -244,9 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  /* =========================================================
-     TASK 03B — NEXT NUMBER SINGLE VALUE
-     ========================================================= */
+  /* TASK 03 B */
 
   const singleInput =
     document.getElementById("singleInput");
@@ -254,14 +205,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const singleOutput =
     document.getElementById("singleOutput");
 
-
   function findNextSingle(value) {
 
-    const isInteger =
-      Number.isInteger(value);
-
-
-    if (isInteger) {
+    if (Number.isInteger(value)) {
 
       return {
         next:value + 1,
@@ -270,28 +216,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
     const decimals =
       (value.toString().split(".")[1] || "").length;
 
-
     const step =
       1 / Math.pow(10, decimals);
-
 
     const next =
       parseFloat(
         (value + step).toFixed(decimals)
       );
 
-
     return {
-      next:next,
+      next,
       type:"float"
     };
-
   }
-
 
   document
     .getElementById("singleBtn")
@@ -299,7 +239,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const value =
         parseFloat(singleInput.value);
-
 
       if (isNaN(value)) {
 
@@ -312,10 +251,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-
       const result =
         findNextSingle(value);
-
 
       setOutput(
         singleOutput,
@@ -325,16 +262,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  /* =========================================================
-     TASK 04 — CAPITALIZE NAME
-     ========================================================= */
+  /* TASK 04 */
 
   const nameInput =
     document.getElementById("nameInput");
 
   const nameOutput =
     document.getElementById("nameOutput");
-
 
   function capitalizeName(name) {
 
@@ -347,9 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
           + part.slice(1)
       )
       .join(" ");
-
   }
-
 
   document
     .getElementById("nameBtn")
@@ -357,7 +289,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const raw =
         nameInput.value.trim();
-
 
       if (raw === "") {
 
@@ -370,7 +301,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-
       if (raw !== raw.toLowerCase()) {
 
         setOutput(
@@ -382,7 +312,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-
       setOutput(
         nameOutput,
         capitalizeName(raw)
@@ -391,9 +320,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  /* =========================================================
-     TASK 05 — BMI CALCULATOR
-     ========================================================= */
+  /* TASK 05 */
 
   const weightInput =
     document.getElementById("weightInput");
@@ -404,14 +331,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const bmiOutput =
     document.getElementById("bmiOutput");
 
-
   function calculateBMI(weightKg, heightM) {
-
-    return weightKg /
-      (heightM * heightM);
-
+    return weightKg / (heightM * heightM);
   }
-
 
   function bmiCategory(bmi) {
 
@@ -425,9 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return "Overweight";
 
     return "Obese";
-
   }
-
 
   document
     .getElementById("bmiBtn")
@@ -438,7 +358,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const height =
         parseFloat(heightInput.value);
-
 
       if (
         isNaN(weight) ||
@@ -456,10 +375,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-
       const bmi =
         calculateBMI(weight, height);
-
 
       setOutput(
         bmiOutput,
@@ -469,9 +386,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  /* =========================================================
-     TASK 06 — RANDOM ARRAY
-     ========================================================= */
+  /* TASK 06 */
 
   const genArrayBtn =
     document.getElementById("genArrayBtn");
@@ -482,7 +397,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const endsOutput =
     document.getElementById("endsOutput");
 
-
   function generateRandomArray(
     length = 8,
     max = 100
@@ -490,14 +404,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return Array.from(
       { length },
-      () =>
-        Math.floor(
-          Math.random() * max
-        )
+      () => Math.floor(Math.random() * max)
     );
-
   }
-
 
   function pickFirstAndLast(arr) {
 
@@ -505,40 +414,30 @@ document.addEventListener("DOMContentLoaded", () => {
       first:arr[0],
       last:arr[arr.length - 1]
     };
-
   }
 
+  genArrayBtn.addEventListener("click", () => {
 
-  genArrayBtn.addEventListener(
-    "click",
-    () => {
+    const arr =
+      generateRandomArray();
 
-      const arr =
-        generateRandomArray();
+    setOutput(
+      genArrayOutput,
+      `Array: [${arr.join(", ")}]`
+    );
 
+    const ends =
+      pickFirstAndLast(arr);
 
-      setOutput(
-        genArrayOutput,
-        `Array: [${arr.join(", ")}]`
-      );
+    setOutput(
+      endsOutput,
+      `First element: ${ends.first} | Last element: ${ends.last}`
+    );
 
-
-      const ends =
-        pickFirstAndLast(arr);
-
-
-      setOutput(
-        endsOutput,
-        `First element: ${ends.first} | Last element: ${ends.last}`
-      );
-
-    }
-  );
+  });
 
 
-  /* =========================================================
-     TASK 07 — LIVE ADDER
-     ========================================================= */
+  /* TASK 07 */
 
   const box1 =
     document.getElementById("box1");
@@ -549,7 +448,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const box3 =
     document.getElementById("box3");
 
-
   function updateSum() {
 
     const a =
@@ -558,46 +456,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const b =
       parseFloat(box2.value);
 
+    if (isNaN(a) || isNaN(b)) {
 
-    if (
-      isNaN(a) ||
-      isNaN(b)
-    ) {
+      box3.value = "";
 
-      box3.value =
+      box3.placeholder =
         "Result will appear here";
 
-    }
+    } else {
 
-    else {
-
-      box3.value =
-        a + b;
+      box3.value = a + b;
 
     }
-
-
-    box3.classList.remove(
-      "just-updated"
-    );
-
-    void box3.offsetWidth;
-
-    box3.classList.add(
-      "just-updated"
-    );
 
   }
 
-
-  box1.addEventListener(
-    "input",
-    updateSum
-  );
-
-  box2.addEventListener(
-    "input",
-    updateSum
-  );
+  box1.addEventListener("input", updateSum);
+  box2.addEventListener("input", updateSum);
 
 });
