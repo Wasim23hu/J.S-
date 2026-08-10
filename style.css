@@ -22,9 +22,18 @@ html{
 body{
   margin:0;
   background:
-    radial-gradient(1100px 500px at 15% -10%,#f0f1f4 0%,transparent 60%),
-    radial-gradient(900px 500px at 100% 0%,#e8f8f4 0%,transparent 55%),
+    radial-gradient(
+      1100px 500px at 15% -10%,
+      #f0f1f4 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 100% 0%,
+      #e8f8f4 0%,
+      transparent 55%
+    ),
     var(--bg);
+
   font-family:'Inter',sans-serif;
   color:var(--ink);
   line-height:1.55;
@@ -40,7 +49,7 @@ code{
   font-family:'JetBrains Mono',monospace;
   background:var(--indigo-soft);
   color:var(--indigo);
-  padding:.1em .4em;
+  padding:0.1em 0.4em;
   border-radius:4px;
 }
 
@@ -51,27 +60,35 @@ code{
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   padding:20px 48px;
+
   border-bottom:1px solid var(--border);
-  background:rgba(255,255,255,.85);
+
+  background:rgba(255,255,255,0.85);
+
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
+
   flex-wrap:wrap;
   gap:12px;
+
   position:sticky;
   top:0;
   z-index:10;
-  transition:box-shadow .25s ease;
+
+  transition:box-shadow 0.25s ease;
 }
 
 .topbar.is-scrolled{
-  box-shadow:0 6px 20px rgba(22,27,46,.06);
+  box-shadow:0 6px 20px rgba(22,27,46,0.06);
 }
 
 .brand{
   display:flex;
   align-items:center;
   gap:10px;
+
   font-family:'Sora',sans-serif;
   font-weight:700;
   font-size:1.05rem;
@@ -87,7 +104,8 @@ code{
 .topbar__nav{
   display:flex;
   gap:28px;
-  font-size:.88rem;
+
+  font-size:0.88rem;
   color:var(--ink-dim);
   font-weight:500;
 }
@@ -105,58 +123,78 @@ code{
 
 .meta{
   font-family:'JetBrains Mono',monospace;
-  font-size:.72rem;
+
+  font-size:0.72rem;
+
   color:var(--ink-dim);
+
   background:var(--indigo-soft);
+
   padding:6px 12px;
+
   border-radius:20px;
+
   white-space:nowrap;
 }
 
 
-/* CARDS */
+/* CARD GRID */
 
 .cards{
   padding:40px 48px 60px;
+
   display:grid;
+
   grid-template-columns:repeat(3,1fr);
+
   gap:20px;
+
   align-items:stretch;
 }
 
 .card{
   background:var(--surface);
+
   border:1px solid var(--border);
+
   border-radius:var(--radius);
+
   padding:26px;
-  box-shadow:0 1px 2px rgba(22,27,46,.03);
+
+  box-shadow:0 1px 2px rgba(22,27,46,0.03);
+
   display:flex;
   flex-direction:column;
+
   min-height:280px;
 
   transition:
-    box-shadow .2s ease,
-    transform .2s ease,
-    border-color .2s ease;
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
 
   opacity:0;
   transform:translateY(16px);
 }
 
 .card.is-visible{
-  animation:cardIn .5s cubic-bezier(.2,.7,.3,1) forwards;
+  animation:cardIn 0.5s cubic-bezier(.2,.7,.3,1) forwards;
 }
 
 @keyframes cardIn{
+
   to{
     opacity:1;
     transform:translateY(0);
   }
+
 }
 
 .card:hover{
-  box-shadow:0 10px 24px rgba(22,27,46,.08);
+  box-shadow:0 10px 24px rgba(22,27,46,0.08);
+
   transform:translateY(-3px);
+
   border-color:#d3d9e6;
 }
 
@@ -164,40 +202,37 @@ code{
   transform:translateY(-3px);
 }
 
+
 .card__top{
   display:flex;
+
   justify-content:space-between;
   align-items:flex-start;
+
   margin-bottom:16px;
 }
 
 .card__no{
   font-family:'JetBrains Mono',monospace;
-  font-size:.72rem;
+
+  font-size:0.72rem;
+
   color:var(--indigo);
+
   background:var(--indigo-soft);
+
   padding:4px 10px;
+
   border-radius:6px;
 }
 
 .card__icon{
   width:22px;
   height:22px;
+
   color:var(--ink-dim);
+
   flex-shrink:0;
-}
-
-#task6 .card__icon{
-  display:none;
-}
-
-
-/* TEXT */
-
-.card p{
-  font-size:.88rem;
-  color:var(--ink-dim);
-  margin:0 0 18px;
 }
 
 
@@ -205,31 +240,58 @@ code{
 
 .card input{
   width:100%;
+
   border:1px solid var(--border);
+
   background:#fafbfd;
+
   border-radius:8px;
+
   padding:10px 12px;
+
   font-family:'Inter',sans-serif;
-  font-size:.9rem;
+
+  font-size:0.9rem;
+
   margin-bottom:10px;
+
   color:var(--ink);
 
   transition:
-    border-color .2s ease,
-    box-shadow .2s ease;
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.card input:focus-visible{
+.card input:focus{
   outline:none;
+
   border-color:var(--indigo);
-  box-shadow:0 0 0 3px var(--indigo-soft);
+
+  box-shadow:
+    0 0 0 3px var(--indigo-soft);
 }
 
 .card input[readonly]{
   background:var(--indigo-soft);
+
   color:var(--indigo);
+
   font-family:'JetBrains Mono',monospace;
+
   font-weight:600;
+
+  cursor:default;
+}
+
+
+/* TEXT */
+
+.card p{
+  font-size:0.88rem;
+
+  color:var(--ink-dim);
+
+  margin:0 0 18px;
 }
 
 
@@ -237,25 +299,39 @@ code{
 
 .card button{
   align-self:flex-start;
+
   display:inline-flex;
+
   align-items:center;
+
   gap:8px;
+
   background:#e3e7f0;
+
   color:var(--ink);
+
   border:none;
+
   padding:9px 16px;
+
   border-radius:8px;
+
   font-family:'Inter',sans-serif;
+
   font-weight:600;
-  font-size:.85rem;
+
+  font-size:0.85rem;
+
   cursor:pointer;
+
   position:relative;
+
   overflow:hidden;
 
   transition:
-    background .2s ease,
-    transform .15s ease,
-    box-shadow .2s ease;
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
 }
 
 .btn__arrow{
@@ -269,62 +345,86 @@ code{
 
 .card button:hover{
   background:#d3d8e4;
+
   transform:translateY(-2px);
-  box-shadow:0 6px 14px rgba(43,48,56,.15);
+
+  box-shadow:
+    0 6px 14px rgba(43,48,56,0.15);
 }
 
 .card button:active{
-  transform:translateY(0) scale(.97);
+  transform:translateY(0) scale(0.97);
+
+  box-shadow:
+    0 2px 6px rgba(43,48,56,0.12);
 }
 
-.card button:focus-visible{
-  outline:2px solid var(--ink);
-  outline-offset:2px;
-}
 
-
-/* RESULTS */
+/* RESULT */
 
 .result{
   margin-top:auto;
+
   padding-top:12px;
 
-  /* No line */
-  border:none !important;
+  border-top:none !important;
+
+  min-height:1.3em;
 }
 
 .result-label{
   display:block;
-  font-family:'JetBrains Mono',monospace;
-  font-size:.66rem;
-  color:var(--ink-dim);
-  text-transform:uppercase;
-  letter-spacing:.06em;
-  margin-bottom:4px;
 
-  /* No line */
-  border:none !important;
+  font-family:'JetBrains Mono',monospace;
+
+  font-size:0.66rem;
+
+  color:var(--ink-dim);
+
+  text-transform:uppercase;
+
+  letter-spacing:0.06em;
+
+  margin-bottom:4px;
 }
 
 .result-value{
   display:block;
+
   font-family:'JetBrains Mono',monospace;
-  font-size:.85rem;
+
+  font-size:0.85rem;
+
   color:var(--teal);
+
   word-break:break-word;
-  border:none !important;
-  outline:none !important;
+
+  border-radius:6px;
+
+  min-height:34px;
+
+  padding:8px 10px;
+
+  background:#fafbfd;
+
+  border:1px solid var(--border) !important;
 }
+
+
+/*
+  Important:
+  Empty result box bhi solid border use karega.
+  Koi dashed border nahi.
+*/
 
 .result-value.is-empty{
   min-height:34px;
 
-  /* IMPORTANT: no dashed line */
-  border:none !important;
-  outline:none !important;
+  border:1px solid var(--border) !important;
+
+  border-radius:8px;
 
   background:#fafbfd;
-  border-radius:8px;
 }
 
 .result-value.is-error{
@@ -332,27 +432,42 @@ code{
 }
 
 
-/* TASK 07 */
+/* TASK 7 */
 
 .triplet{
-  display:flex;
+  display:grid;
+
+  grid-template-columns:
+    minmax(0,1fr)
+    30px
+    minmax(0,1fr)
+    minmax(0,1fr);
+
   align-items:center;
+
   gap:10px;
-  flex-wrap:nowrap;
-  width:100%;
+
+  margin-top:4px;
 }
 
 .triplet input{
-  flex:1 1 0;
-  min-width:0;
+  width:100%;
+
   margin-bottom:0;
 }
 
 .triplet__op{
-  flex:0 0 auto;
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
   font-family:'JetBrains Mono',monospace;
-  font-size:1.1rem;
+
+  font-size:1.2rem;
+
   color:var(--indigo);
+
   font-weight:600;
 }
 
@@ -361,29 +476,16 @@ code{
 
 .pagefoot{
   text-align:center;
+
   padding:24px 20px 40px;
 }
 
 .pagefoot p{
   font-family:'JetBrains Mono',monospace;
-  font-size:.75rem;
+
+  font-size:0.75rem;
+
   color:var(--ink-dim);
-}
-
-
-/* REMOVE ALL DASHED AND DOTTED LINES */
-
-.result,
-.result-value,
-.result-value.is-empty,
-.result-label,
-.subblock{
-  border-style:solid !important;
-  border-width:0 !important;
-  border-top:0 !important;
-  border-right:0 !important;
-  border-bottom:0 !important;
-  border-left:0 !important;
 }
 
 
@@ -393,6 +495,10 @@ code{
 
   .cards{
     grid-template-columns:repeat(2,1fr);
+  }
+
+  .triplet{
+    grid-template-columns:1fr 30px 1fr 1fr;
   }
 
 }
@@ -410,20 +516,23 @@ code{
 
   .cards{
     grid-template-columns:1fr;
+
     padding:24px 20px 40px;
   }
 
   .triplet{
-    flex-direction:column;
-    align-items:stretch;
+    grid-template-columns:1fr;
+    gap:8px;
   }
 
   .triplet__op{
-    align-self:center;
+    height:20px;
   }
 
 }
 
+
+/* REDUCE MOTION */
 
 @media (prefers-reduced-motion:reduce){
 
@@ -439,7 +548,9 @@ code{
 
   .card{
     animation:none !important;
+
     opacity:1;
+
     transform:none;
   }
 
