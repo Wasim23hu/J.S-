@@ -41,7 +41,9 @@ code{
   border-radius:4px;
 }
 
+
 /* NAVBAR */
+
 .topbar{
   display:flex;
   justify-content:space-between;
@@ -108,7 +110,9 @@ code{
   white-space:nowrap;
 }
 
+
 /* CARD GRID */
+
 .cards{
   padding:40px 48px 60px;
   display:grid;
@@ -126,9 +130,12 @@ code{
   display:flex;
   flex-direction:column;
   min-height:280px;
-  transition:box-shadow 0.2s ease,
-             transform 0.2s ease,
-             border-color 0.2s ease;
+
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+
   opacity:0;
   transform:translateY(16px);
 }
@@ -138,10 +145,12 @@ code{
 }
 
 @keyframes cardIn{
+
   to{
     opacity:1;
     transform:translateY(0);
   }
+
 }
 
 .card:hover{
@@ -177,16 +186,24 @@ code{
   flex-shrink:0;
 }
 
-/* TASK 06 ka diagonal/slash icon hide */
+
+/* TASK 06 ICON HIDE */
+
 #task6 .card__icon{
   display:none;
 }
+
+
+/* TEXT */
 
 .card p{
   font-size:0.88rem;
   color:var(--ink-dim);
   margin:0 0 18px;
 }
+
+
+/* INPUT */
 
 .card input{
   width:100%;
@@ -198,8 +215,10 @@ code{
   font-size:0.9rem;
   margin-bottom:10px;
   color:var(--ink);
-  transition:border-color 0.2s ease,
-             box-shadow 0.2s ease;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .card input:focus-visible{
@@ -215,7 +234,9 @@ code{
   font-weight:600;
 }
 
+
 /* BUTTON */
+
 .card button{
   align-self:flex-start;
   display:inline-flex;
@@ -232,12 +253,16 @@ code{
   cursor:pointer;
   position:relative;
   overflow:hidden;
-  transition:background 0.2s ease,
-             transform 0.15s ease,
-             box-shadow 0.2s ease;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
 }
 
-/* Buttons ke arrows bilkul hide */
+
+/* BUTTON ARROWS HIDDEN */
+
 .btn__arrow{
   display:none !important;
 }
@@ -263,8 +288,9 @@ code{
   outline-offset:2px;
 }
 
+
 /* RESULT */
-/* Yahan pehle dashed line thi — ab bilkul nahi */
+
 .result{
   margin-top:auto;
   padding-top:12px;
@@ -291,9 +317,13 @@ code{
   border-radius:6px;
 }
 
+
+/* DASHED BOX COMPLETELY REMOVED */
+
 .result-value.is-empty{
   min-height:34px;
-  border:1px dashed var(--border);
+  border:none !important;
+  outline:none !important;
   border-radius:8px;
   background:#fafbfd;
   color:var(--ink-dim);
@@ -303,7 +333,9 @@ code{
   color:var(--error);
 }
 
+
 /* SUBBLOCK */
+
 .subblock{
   border:none !important;
   border-radius:10px;
@@ -325,7 +357,9 @@ code{
   margin-bottom:10px;
 }
 
+
 /* TASK 7 */
+
 .triplet{
   display:flex;
   align-items:center;
@@ -345,7 +379,9 @@ code{
   font-weight:600;
 }
 
+
 /* FOOTER */
+
 .pagefoot{
   text-align:center;
   padding:24px 20px 40px;
@@ -357,14 +393,19 @@ code{
   color:var(--ink-dim);
 }
 
+
 /* RESPONSIVE */
+
 @media (max-width:960px){
+
   .cards{
     grid-template-columns:repeat(2,1fr);
   }
+
 }
 
 @media (max-width:640px){
+
   .topbar{
     padding:16px 20px;
   }
@@ -386,9 +427,11 @@ code{
   .triplet__op{
     align-self:center;
   }
+
 }
 
 @media (prefers-reduced-motion:reduce){
+
   .card,
   .card button,
   .card input{
@@ -404,4 +447,5 @@ code{
     opacity:1;
     transform:none;
   }
+
 }
