@@ -1,10 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
 
-  /* =========================================================
-     OUTPUT HELPER
-     ========================================================= */
-
   function setOutput(element, text, state) {
 
     const valueElement =
@@ -28,10 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =========================================================
-     TASK 1
-     AGE TO DAYS
-     ========================================================= */
+// TASK 1 //
 
   const ageInput =
     document.getElementById("ageInput");
@@ -71,11 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-
-  /* =========================================================
-     TASK 2
-     HOURS TO SECONDS
-     ========================================================= */
+// TASK 2 //
 
   const hoursInput =
     document.getElementById("hoursInput");
@@ -116,11 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  /* =========================================================
-     TASK 3 A
-     NEXT NUMBER IN ARRAY
-     ========================================================= */
-
+  //  TASK 3 A //
   const arrayInput =
     document.getElementById("arrayInput");
 
@@ -234,10 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  /* =========================================================
-     TASK 3 B
-     NEXT NUMBER SINGLE VALUE
-     ========================================================= */
+  //   TASK 3 B   //
 
   const singleInput =
     document.getElementById("singleInput");
@@ -313,10 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  /* =========================================================
-     TASK 4
-     CAPITALIZE NAME
-     ========================================================= */
+  //  TASK 4 //  
 
   const nameInput =
     document.getElementById("nameInput");
@@ -378,10 +357,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  /* =========================================================
-     TASK 5
-     BMI CALCULATOR
-     ========================================================= */
+//  TASK 5 //
 
   const weightInput =
     document.getElementById("weightInput");
@@ -457,11 +433,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-
-  /* =========================================================
-     TASK 6
-     RANDOM ARRAY
-     ========================================================= */
+ //   TASK 6  //
 
   const genArrayBtn =
     document.getElementById("genArrayBtn");
@@ -523,11 +495,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-
-  /* =========================================================
-     TASK 7
-     LIVE ADDER
-     ========================================================= */
+ //   TASK 7   //
 
   const box1 =
     document.getElementById("box1");
@@ -547,11 +515,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const secondValue =
       box2.value.trim();
 
-
-    /*
-      Agar dono boxes mein number nahi hain
-      to Box 3 mein NaN rahega.
-    */
 
     if (
       firstValue === "" ||
@@ -598,9 +561,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 
-  /*
-    Page load hote hi Box 3 mein NaN show hoga.
-  */
 
   updateSum();
 
