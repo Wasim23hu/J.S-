@@ -122,7 +122,9 @@ code{
 }
 
 .meta{
+  width: 100%;
   text-align: center;
+  margin: 0 auto;
   font-family:'JetBrains Mono',monospace;
 
   font-size:0.72rem;
@@ -413,11 +415,6 @@ code{
 }
 
 
-/*
-  Important:
-  Empty result box bhi solid border use karega.
-  Koi dashed border nahi.
-*/
 
 .result-value.is-empty{
   min-height:34px;
