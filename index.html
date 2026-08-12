@@ -3,19 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>JS Utility Toolkit — Web Engineering Lab</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="topbar" id="topbar">
-
+  <div class="brand"><span class="brand__dot"></span>JS Toolkit</div>
 
   <nav class="topbar__nav">
     <a href="#task1" class="active">Overview</a>
@@ -23,34 +21,22 @@
     <a href="#about">About</a>
   </nav>
 
-  <div class="meta">
-    WASIM SHAH · S/W ENGINEER · HAZARA UNIVERSITY
-  </div>
-
+  <div class="meta">GULFAM · CS · HAZARA UNIVERSITY</div>
 </header>
-
 
 <main class="cards">
 
   <!-- TASK 1 -->
   <section class="card" id="task1">
-
     <div class="card__top">
-      <span class="card__no">TASK 1</span>
+      <span class="card__no">TASK 01</span>
+    </div>
 
     <h3>Age to Days Converter</h3>
+    <p>Convert an age in years into total number of days.</p>
 
-    <p>
-      Convert an age in years into total number of days.
-    </p>
-
-    <input
-      type="number"
-      id="ageInput"
-      placeholder="Enter age in years"
-      min="0"
-      step="any"
-    >
+    <input type="number" id="ageInput"
+    placeholder="Enter age in years" min="0" step="any">
 
     <button id="ageBtn">
       <span class="btn__label">Convert</span>
@@ -60,31 +46,20 @@
       <span class="result-label">Output</span>
       <span class="result-value is-empty"></span>
     </div>
-
   </section>
 
 
   <!-- TASK 2 -->
   <section class="card" id="task2">
-
     <div class="card__top">
-      <span class="card__no">TASK 2</span>
-
-
+      <span class="card__no">TASK 02</span>
+    </div>
 
     <h3>Hours to Seconds</h3>
+    <p>Convert a duration in hours into seconds.</p>
 
-    <p>
-      Convert a duration in hours into seconds.
-    </p>
-
-    <input
-      type="number"
-      id="hoursInput"
-      placeholder="Enter hours"
-      min="0"
-      step="any"
-    >
+    <input type="number" id="hoursInput"
+    placeholder="Enter hours" min="0" step="any">
 
     <button id="hoursBtn">
       <span class="btn__label">Convert</span>
@@ -94,142 +69,23 @@
       <span class="result-label">Output</span>
       <span class="result-value is-empty"></span>
     </div>
-
-  </section>
-
-
-  <!-- TASK 3 A -->
-  <section class="card" id="task3">
-
-    <div class="card__top">
-      <span class="card__no">TASK 3 A</span>
-
-
-
-    <h3>Next Number In Array</h3>
-
-    <p>
-      Find the number that sits next to a target value inside an array.
-    </p>
-
-    <input
-      type="text"
-      id="arrayInput"
-      placeholder="Enter array numbers"
-    >
-
-    <input
-      type="number"
-      id="arrayTarget"
-      placeholder="Enter target number"
-      step="any"
-    >
-
-    <button id="arrayBtn">
-      <span class="btn__label">Find Next</span>
-    </button>
-
-    <div class="result" id="arrayOutput">
-      <span class="result-label">Output</span>
-      <span class="result-value is-empty"></span>
-    </div>
-
-  </section>
-
-
-  <!-- TASK 3 B -->
-  <section class="card" id="task3b">
-
-    <div class="card__top">
-      <span class="card__no">TASK 3 B</span>
-
-
-
-    <h3>Next Number Single Value</h3>
-
-    <p>
-      Find the next number after a single integer or float value.
-    </p>
-
-    <input
-      type="number"
-      id="singleInput"
-      placeholder="Enter any number"
-      step="any"
-    >
-
-    <button id="singleBtn">
-      <span class="btn__label">Find Next</span>
-    </button>
-
-    <div class="result" id="singleOutput">
-      <span class="result-label">Output</span>
-      <span class="result-value is-empty"></span>
-    </div>
-
-  </section>
-
-
-  <!-- TASK 4 -->
-  <section class="card" id="task4">
-
-    <div class="card__top">
-      <span class="card__no">TASK 4</span>
-
-
-
-    <h3>Capitalize Name</h3>
-
-    <p>
-      Enter your name in lowercase and capitalize each part.
-    </p>
-
-    <input
-      type="text"
-      id="nameInput"
-      placeholder="Enter your name"
-    >
-
-    <button id="nameBtn">
-      <span class="btn__label">Capitalize</span>
-    </button>
-
-    <div class="result" id="nameOutput">
-      <span class="result-label">Output</span>
-      <span class="result-value is-empty"></span>
-    </div>
-
   </section>
 
 
   <!-- TASK 5 -->
   <section class="card" id="task5">
-
     <div class="card__top">
-      <span class="card__no">TASK 5</span>
-
+      <span class="card__no">TASK 05</span>
+    </div>
 
     <h3>BMI Calculator</h3>
+    <p>Calculate Body Mass Index from weight and height.</p>
 
-    <p>
-      Calculate Body Mass Index from weight and height.
-    </p>
+    <input type="number" id="weightInput"
+    placeholder="Weight (kg)" min="0" step="any">
 
-    <input
-      type="number"
-      id="weightInput"
-      placeholder="Enter weight in kg"
-      min="0"
-      step="any"
-    >
-
-    <input
-      type="number"
-      id="heightInput"
-      placeholder="Enter height in meters"
-      min="0"
-      step="any"
-    >
+    <input type="number" id="heightInput"
+    placeholder="Height (m)" min="0" step="any">
 
     <button id="bmiBtn">
       <span class="btn__label">Calculate</span>
@@ -239,23 +95,42 @@
       <span class="result-label">Output</span>
       <span class="result-value is-empty"></span>
     </div>
+  </section>
 
+
+  <!-- TASK 4 -->
+  <section class="card" id="task4">
+    <div class="card__top">
+      <span class="card__no">TASK 04</span>
+    </div>
+
+    <h3>Capitalize Name</h3>
+
+    <p>
+      Enter your name in lowercase only — the first letter of each part is capitalized.
+    </p>
+
+    <input type="text" id="nameInput" placeholder="Ali">
+
+    <button id="nameBtn">
+      <span class="btn__label">Capitalize</span>
+    </button>
+
+    <div class="result" id="nameOutput">
+      <span class="result-label">Output</span>
+      <span class="result-value is-empty"></span>
+    </div>
   </section>
 
 
   <!-- TASK 6 -->
   <section class="card" id="task6">
-
     <div class="card__top">
-      <span class="card__no">TASK 6</span>
+      <span class="card__no">TASK 06</span>
+    </div>
 
-
-
-    <h3>Random Array First And Last</h3>
-
-    <p>
-      Generate a random array and pick its first and last elements.
-    </p>
+    <h3>Random Array — First &amp; Last</h3>
+    <p>Generate a random array, then pick its first and last elements.</p>
 
     <button id="genArrayBtn">
       <span class="btn__label">Generate Array</span>
@@ -267,104 +142,121 @@
     </div>
 
     <div class="result" id="endsOutput">
-      <span class="result-label">First And Last</span>
+      <span class="result-label">First &amp; Last</span>
       <span class="result-value is-empty"></span>
     </div>
+  </section>
 
+
+  <!-- TASK 3A -->
+  <section class="card" id="task3">
+    <div class="card__top">
+      <span class="card__no">TASK 03 · A</span>
+    </div>
+
+    <h3>Next Number — In Array</h3>
+    <p>Find the number that sits next to a target value inside an array.</p>
+
+    <input type="text" id="arrayInput"
+    placeholder="Array, comma-separated e.g. 4, 9, 15, 22, 30">
+
+    <input type="number" id="arrayTarget"
+    placeholder="Number to search for" step="any">
+
+    <button id="arrayBtn">
+      <span class="btn__label">Find Next</span>
+    </button>
+
+    <div class="result" id="arrayOutput">
+      <span class="result-label">Output</span>
+      <span class="result-value is-empty"></span>
+    </div>
+  </section>
+
+
+  <!-- TASK 3B -->
+  <section class="card" id="task3b">
+    <div class="card__top">
+      <span class="card__no">TASK 03 · B</span>
+    </div>
+
+    <h3>Next Number — Single Value</h3>
+    <p>Find the next number after a single value, whether it's an integer or a float.</p>
+
+    <input type="number" id="singleInput"
+    placeholder="Enter a number (integer or float)" step="any">
+
+    <button id="singleBtn">
+      <span class="btn__label">Find Next</span>
+    </button>
+
+    <div class="result" id="singleOutput">
+      <span class="result-label">Output</span>
+      <span class="result-value is-empty"></span>
+    </div>
   </section>
 
 
   <!-- TASK 7 -->
   <section class="card" id="task7">
+    <div class="card__top">
+      <span class="card__no">TASK 07</span>
+    </div>
 
-
-
-    <h3>Live Adder Event Handling</h3>
+    <h3>Live Adder (Event Handling)</h3>
 
     <p>
-      Enter numbers in both boxes. The third box updates automatically.
+      Box three shows <code>NaN</code> until both boxes hold a number,
+      then updates live as you type.
     </p>
 
     <div class="triplet">
-
-      <input
-        type="number"
-        id="box1"
-        placeholder="Enter any number"
-      >
+      <input type="number" id="box1" placeholder="Box 1">
 
       <span class="triplet__op">+</span>
 
-      <input
-        type="number"
-        id="box2"
-        placeholder="Enter any number"
-      >
+      <input type="number" id="box2" placeholder="Box 2">
 
-      <input
-        type="text"
-        id="box3"
-        value="NaN"
-        placeholder="NaN"
-        readonly
-      >
-
+      <input type="text" id="box3" placeholder="NaN" readonly>
     </div>
-
   </section>
 
 </main>
 
 
 <footer class="pagefoot" id="about">
-
   <p>
-     WEB DEVELOPMENT
+    Final Year Project — Web Engineering Lab · Gulfam · Computer Science,
+    Hazara University Mansehra
   </p>
-
 </footer>
 
 
 <script src="script.js"></script>
 
 <script>
+  const topbar = document.getElementById("topbar");
 
-const topbar = document.getElementById("topbar");
-
-window.addEventListener("scroll", () => {
-
-  topbar.classList.toggle(
-    "is-scrolled",
-    window.scrollY > 8
-  );
-
-});
-
-
-const cards = document.querySelectorAll(".card");
-
-const io = new IntersectionObserver((entries) => {
-
-  entries.forEach((entry) => {
-
-    if (entry.isIntersecting) {
-
-      entry.target.classList.add("is-visible");
-
-      io.unobserve(entry.target);
-
-    }
-
+  window.addEventListener("scroll", () => {
+    topbar.classList.toggle(
+      "is-scrolled",
+      window.scrollY > 8
+    );
   });
 
-}, {
-  threshold: 0.12
-});
+  const cards = document.querySelectorAll(".card");
 
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
 
-cards.forEach((card) => io.observe(card));
-
+  cards.forEach((card) => io.observe(card));
 </script>
 
 </body>
-            </html>
+</html>
